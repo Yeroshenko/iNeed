@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
 import {
-  StarFilled,
-  HomeFilled,
-  CalendarFilled,
-  PlusCircleFilled
+  StarOutlined,
+  HomeOutlined,
+  CalendarOutlined,
+  PlusCircleOutlined
 } from '@ant-design/icons'
 
 import 'styles/components/Navbar.sass'
-import { useHistory } from 'react-router-dom'
 
 const Navbar = ({ lists }) => {
   const [collapsed, setCollapsed] = useState(false)
@@ -17,9 +17,9 @@ const Navbar = ({ lists }) => {
   const toggleColapsed = () => setCollapsed(!collapsed)
 
   const menuItems = [
-    { title: 'Задачи', id: 'tasks', icon: <HomeFilled /> },
-    { title: 'Важные', id: 'important', icon: <StarFilled /> },
-    { title: 'Запланированные', id: 'planned', icon: <CalendarFilled /> }
+    { title: 'Задачи', id: 'tasks', icon: <HomeOutlined /> },
+    { title: 'Важные', id: 'important', icon: <StarOutlined /> },
+    { title: 'Запланированные', id: 'planned', icon: <CalendarOutlined /> }
   ]
 
   const clickHandler = e => {
@@ -30,7 +30,7 @@ const Navbar = ({ lists }) => {
     <Menu.Item
       key={id}
       className='navbar__menu-item'
-      icon={icon || <PlusCircleFilled />}
+      icon={icon || <PlusCircleOutlined />}
     >
       <span className='navbar__menu-text'>{title}</span>
     </Menu.Item>
@@ -46,10 +46,11 @@ const Navbar = ({ lists }) => {
         className='navbar__sider'
       >
         <Menu
+          defaultSelectedKeys={['tasks']}
           theme='dark'
-          defaultSelectedKeys={['tsks']}
           mode='inline'
           onClick={clickHandler}
+          className='navbar__menu'
         >
           {menuItems.map(item => menuItemCreator(item))}
 

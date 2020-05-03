@@ -1,27 +1,23 @@
 import React, { useEffect, useState } from 'react'
+import { Switch, Route } from 'react-router-dom'
 
-import { get } from 'api'
-import { Navbar } from 'components'
+import { listsApi } from 'api/api'
+import { Navbar, TodoList } from 'components'
 import 'styles/components/App.sass'
 
 const App = () => {
   const [lists, setLists] = useState([])
-  const [todos, setTodos] = useState([])
 
   useEffect(() => {
-    get('lists').then(setLists)
-    get('todos').then(setTodos)
+    listsApi.getAll().then(setLists)
   }, [])
 
   return (
     <div className='app'>
       <Navbar lists={lists} />
-
-      <ul>
-        {todos.map(todo => (
-          <li key={todo.id}>{todo.title}</li>
-        ))}
-      </ul>
+      <Switch>
+        <Route path='/:listId' component={TodoList} />
+      </Switch>
     </div>
   )
 }
