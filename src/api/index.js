@@ -28,5 +28,4 @@ export const listsApi = {
   getAll() {
     return get('lists')
   }
-
 }

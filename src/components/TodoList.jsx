@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import { todosApi } from 'api/api'
+import { todosApi } from 'api'
 
 const TodoList = () => {
   const [todos, setTodos] = useState([])
@@ -13,11 +13,13 @@ const TodoList = () => {
   }, [currentListId])
 
   return (
-    <ul>
-      {todos.map(todo => (
-        <li key={todo.id}>{todo.title}</li>
-      ))}
-    </ul>
+    <div className='todo-list'>
+      <ul>
+        {todos.map(todo => (
+          <li key={todo.id}>{todo.title}</li>
+        ))}
+      </ul>
+    </div>
   )
 }
 

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { useHistory } from 'react-router-dom'
 import { Layout, Menu } from 'antd'
 import {
   StarOutlined,
@@ -10,21 +9,16 @@ import {
 
 import 'styles/components/Navbar.sass'
 
-const Navbar = ({ lists }) => {
+const Navbar = ({ lists, menuClickHandler, defaultSelectedItem }) => {
   const [collapsed, setCollapsed] = useState(false)
-  const history = useHistory()
 
   const toggleColapsed = () => setCollapsed(!collapsed)
 
-  const menuItems = [
+  const defaultMenuItems = [
     { title: 'Задачи', id: 'tasks', icon: <HomeOutlined /> },
     { title: 'Важные', id: 'important', icon: <StarOutlined /> },
     { title: 'Запланированные', id: 'planned', icon: <CalendarOutlined /> }
   ]
-
-  const clickHandler = e => {
-    history.push(e.key)
-  }
 
   const menuItemCreator = ({ id, icon, title }) => (
     <Menu.Item
@@ -46,13 +40,13 @@ const Navbar = ({ lists }) => {
         className='navbar__sider'
       >
         <Menu
-          defaultSelectedKeys={['tasks']}
+          defaultSelectedKeys={defaultSelectedItem}
           theme='dark'
           mode='inline'
-          onClick={clickHandler}
+          onClick={menuClickHandler}
           className='navbar__menu'
         >
-          {menuItems.map(item => menuItemCreator(item))}
+          {defaultMenuItems.map(item => menuItemCreator(item))}
 
           <hr className='navbar__menu-separator' />
 
