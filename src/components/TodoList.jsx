@@ -1,14 +1,10 @@
 import React from 'react'
-import { Checkbox } from 'antd'
 
+import { TodoItem } from 'components'
 import { randomColor } from 'utils/randomColor'
 import 'styles/components/TodoList.sass'
 
 const TodoList = ({ todos, list }) => {
-  const onChange = e => {
-    console.log('checked = ', e.target.checked)
-  }
-
   return (
     <div className='todo-list'>
       {list && (
@@ -16,13 +12,9 @@ const TodoList = ({ todos, list }) => {
           {list.title}
         </h2>
       )}
-      <ul className='todo-list__list'>
+      <ul className='todo-list__items'>
         {todos.map(todo => (
-          <li key={todo.id}>
-            <Checkbox onChange={onChange} checked={todo.completed}>
-              {todo.title}
-            </Checkbox>
-          </li>
+          <TodoItem todo={todo} />
         ))}
       </ul>
     </div>
