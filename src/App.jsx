@@ -1,8 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import { Navbar } from 'containers'
-import { TodoList } from 'components'
+import { Navbar, TodoList } from 'containers'
 import 'styles/components/App.sass'
 
 const App = () => {

@@ -20,7 +20,19 @@ export const todosApi = {
     return get('todos')
   },
   getOne(listId) {
-    return get('todos').then(items => items.filter(item => item.listId === listId))
+    return db.collection('todos')
+      .where('listId', '==', listId)
+      .get()
+      .then(snapshot => {
+        const items = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }))
+        return items
+      })
+      .catch(error => {
+        console.log('Error getting documents: ', error)
+      })
   }
 }
 
