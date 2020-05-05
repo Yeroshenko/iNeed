@@ -5,11 +5,11 @@ import 'styles/components/TodoItem.sass'
 
 const TodoItem = ({ todo }) => {
   const onChange = e => {
-    console.log('checked = ', e.target.checked)
+    alert(e.target.checked)
   }
 
   return (
-    <li key={todo.id} className='todo-item'>
+    <li className='todo-item'>
       <Checkbox
         className='todo-item__checkbox'
         onChange={onChange}
