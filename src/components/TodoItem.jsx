@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Checkbox } from 'antd'
 
 import 'styles/components/TodoItem.sass'
 
 const TodoItem = ({ todo }) => {
+  const [checked, setChecked] = useState(todo.completed)
   const onChange = e => {
-    alert(e.target.checked)
+    setChecked(e.target.checked)
   }
 
   return (
@@ -13,7 +14,7 @@ const TodoItem = ({ todo }) => {
       <Checkbox
         className='todo-item__checkbox'
         onChange={onChange}
-        checked={todo.completed}
+        checked={checked}
       >
         <span className='todo-item__text'>{todo.title}</span>
       </Checkbox>

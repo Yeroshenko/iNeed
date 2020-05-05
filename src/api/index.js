@@ -33,6 +33,15 @@ export const todosApi = {
       .catch(error => {
         console.log('Error getting documents: ', error)
       })
+  },
+  create(data) {
+    return db.collection('todos')
+      .add({ 
+        ...data, 
+        completed: false,
+      })
+      .then(docRef => docRef.get())
+      .then(doc => doc.data()) 
   }
 }
 

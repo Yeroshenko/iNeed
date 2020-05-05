@@ -1,0 +1,29 @@
+@import '../variables'
+
+.todo-creator
+  padding: 8px 20px
+  background-color: $white
+  border-radius: $base-border-radius
+  transition: .2s all
+  
+  &--created
+    padding: 20px
+
+.todo-creator__trigger
+  font-size: 20px
+  opacity: .6
+  transition: .2s all ease-in-out
+  cursor: pointer
+
+  &:hover
+    opacity: 1
+
+.todo-creator__trigger-text
+  padding-left: 16px
+
+.todo-creator__input.ant-form-item
+  margin-bottom: 12px
+
+.todo-creator__buttons .todo-creator__button
+  &:not(:last-child)
+    margin-right: 12px

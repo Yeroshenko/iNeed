@@ -4,7 +4,7 @@ import {
   StarOutlined,
   HomeOutlined,
   CalendarOutlined,
-  PlusCircleOutlined
+  AlignLeftOutlined
 } from '@ant-design/icons'
 
 import 'styles/components/Navbar.sass'
@@ -24,7 +24,7 @@ const Navbar = ({ lists, menuClickHandler, defaultSelectedItem }) => {
     <Menu.Item
       key={id}
       className='navbar__menu-item'
-      icon={icon || <PlusCircleOutlined />}
+      icon={icon || <AlignLeftOutlined />}
     >
       <span className='navbar__menu-text'>{title}</span>
     </Menu.Item>
