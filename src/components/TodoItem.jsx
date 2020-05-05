@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Checkbox } from 'antd'
 
+import { CloseIcon, EditIcon } from 'icons'
 import 'styles/components/TodoItem.sass'
 
 const TodoItem = ({ todo }) => {
@@ -18,6 +19,10 @@ const TodoItem = ({ todo }) => {
       >
         <span className='todo-item__text'>{todo.title}</span>
       </Checkbox>
+      <div className='todo-item__icons'>
+        <EditIcon className='todo-item__icon' />
+        <CloseIcon className='todo-item__icon' />
+      </div>
     </li>
   )
 }
