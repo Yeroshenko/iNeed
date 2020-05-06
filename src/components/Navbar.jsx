@@ -33,9 +33,10 @@ const Navbar = ({ lists, menuClickHandler, defaultSelectedItem }) => {
   return (
     <div className='navbar'>
       <Layout.Sider
-        collapsible
         collapsed={collapsed}
         onCollapse={toggleColapsed}
+        breakpoint='lg'
+        collapsedWidth='0'
         width='250'
         className='navbar__sider'
       >
