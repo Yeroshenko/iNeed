@@ -36,12 +36,28 @@ export const todosApi = {
   },
   create(data) {
     return db.collection('todos')
-      .add({ 
-        ...data, 
-        completed: false,
-      })
+      .add({ ...data, completed: false })
       .then(docRef => docRef.get())
-      .then(doc => doc.data()) 
+      .then(doc => ({
+        id: doc.id,
+        ...doc.data()
+      })) 
+      .catch(error => {
+        console.error('Error adding document: ', error)
+      })
+  },
+  delete(itemId) {
+    return db.collection('todos').doc(itemId).delete()
+      .then(() => itemId)
+      .catch(error => {
+        console.error('Error removing document: ', error)
+      })
+  },
+  update(itemId, data) {
+    return db.collection('todos').doc(itemId).update(data)
+      .catch(error => {
+        console.error('Error updating document: ', error)
+      })
   }
 }
 
