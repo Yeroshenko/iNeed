@@ -1,11 +1,12 @@
 import React from 'react'
+import cn from 'classnames'
 
 import { TodoCreator, TodoItem } from 'containers'
 import { randomColor } from 'utils/randomColor'
 import 'styles/components/TodoList.sass'
 
-const TodoList = ({ todos, list }) => (
-  <div className='todo-list'>
+const TodoList = ({ todos, list, detailsIsOpen }) => (
+  <div className={cn('todo-list', { 'todo-list--show_details': detailsIsOpen })}>
     {list && (
       <>
         <h2 className='todo-list__title' style={{ color: randomColor() }}>

@@ -1,12 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
-import { listsReducer, todosReducer } from './reducers'
-
-// import boardReducer from './boardReducer'
+import { listsReducer, todosReducer, detailsReducer } from './reducers'
 
 const rootReducer = combineReducers({
   lists: listsReducer,
-  todos: todosReducer
+  todos: todosReducer,
+  details: detailsReducer
 })
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose

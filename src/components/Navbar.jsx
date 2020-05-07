@@ -3,7 +3,6 @@ import { Layout, Menu } from 'antd'
 import {
   StarOutlined,
   HomeOutlined,
-  CalendarOutlined,
   AlignLeftOutlined
 } from '@ant-design/icons'
 
@@ -15,9 +14,8 @@ const Navbar = ({ lists, menuClickHandler, defaultSelectedItem }) => {
   const toggleColapsed = () => setCollapsed(!collapsed)
 
   const defaultMenuItems = [
-    { title: 'Задачи', id: 'tasks', icon: <HomeOutlined /> },
-    { title: 'Важные', id: 'important', icon: <StarOutlined /> },
-    { title: 'Запланированные', id: 'planned', icon: <CalendarOutlined /> }
+    { title: 'Все задачи', id: 'tasks', icon: <HomeOutlined /> },
+    { title: 'Важные', id: 'important', icon: <StarOutlined /> }
   ]
 
   const menuItemCreator = ({ id, icon, title }) => (

@@ -1,0 +1,15 @@
+@import '../variables'
+
+.todo-details
+  width: 400px
+  position: fixed
+  right: 0
+  top: 0
+  bottom: 0 
+  background-color: $white
+  transform: translateX(100%)
+  transition: .2s all ease-in-out
+  z-index: 2
+
+  &--open
+    transform: translateX(0)

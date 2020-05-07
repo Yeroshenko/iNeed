@@ -6,7 +6,7 @@ const initialState = {
   lists: []
 }
 
-const listsReducer = (state = initialState, action) => {
+export default function listsReducer(state = initialState, action) {
   switch (action.type) {
     case SET_ALL: 
       return {
@@ -33,4 +33,3 @@ export const getLists = () => async (dispatch) => {
 } 
 
 
-export default listsReducer
