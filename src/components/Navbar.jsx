@@ -47,9 +47,9 @@ const Navbar = ({ lists, menuClickHandler, defaultSelectedItem }) => {
           onClick={menuClickHandler}
           className='navbar__menu'
         >
-          {defaultMenuItems.map(item => menuItemCreator(item))}
+          {/* {defaultMenuItems.map(item => menuItemCreator(item))} */}
 
-          <hr className='navbar__menu-separator' />
+          {/* <hr className='navbar__menu-separator' /> */}
 
           {lists && lists.map(list => menuItemCreator(list))}
         </Menu>

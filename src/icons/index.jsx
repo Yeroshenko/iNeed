@@ -1,9 +1,9 @@
 import React from 'react'
 import Icon from '@ant-design/icons'
 
-import { ReactComponent as PlusSvg } from 'icons/svg/plus.svg'
-import { ReactComponent as CloseSvg } from 'icons/svg/close.svg'
-import { ReactComponent as EditSvg } from 'icons/svg/edit.svg'
+import { ReactComponent as PlusSvg } from 'assets/icons/plus.svg'
+import { ReactComponent as CloseSvg } from 'assets/icons/close.svg'
+import { ReactComponent as EditSvg } from 'assets/icons/edit.svg'
 
 // custom icons
 export const PlusIcon = props => <Icon component={PlusSvg} {...props} />
