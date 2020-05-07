@@ -2,7 +2,8 @@ import React, { useRef } from 'react'
 import { Checkbox } from 'antd'
 
 import { CloseIcon, EditIcon } from 'icons'
-import clickSound from 'assets/sounds/click.mp3'
+import checkSound from 'assets/sounds/check.mp3'
+import uncheckSound from 'assets/sounds/uncheck.mp3'
 import 'styles/components/TodoItem.sass'
 
 const TodoItem = ({
@@ -10,23 +11,28 @@ const TodoItem = ({
   deleteItem,
   updateItem
 }) => {
-  const audio = useRef(null)
+  const checkAudio = useRef(null)
+  const uncheckAudio = useRef(null)
 
   const changeHandler = (id, completed) => {
     updateItem(id, { completed: !completed })
-    audio.current.volume = '0.5'
-    audio.current.play()
+    uncheckAudio.current.volume = '0.5'
+    if (completed) {
+      uncheckAudio.current.play()
+    } else {
+      checkAudio.current.play()
+    }
   }
   return (
     <li className='todo-item'>
-      <audio ref={audio} src={clickSound} preload='auto' />
+      <audio ref={checkAudio} src={checkSound} preload='auto' />
+      <audio ref={uncheckAudio} src={uncheckSound} preload='auto' />
       <Checkbox
         className='todo-item__checkbox'
         onChange={changeHandler.bind(this, id, completed)}
         checked={completed}
-      >
-        <span className='todo-item__text'>{title}</span>
-      </Checkbox>
+      />
+      <span className='todo-item__text'>{title}</span>
       <div className='todo-item__icons'>
         <EditIcon className='todo-item__icon' />
         <CloseIcon

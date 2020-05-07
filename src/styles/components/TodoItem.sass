@@ -6,7 +6,6 @@
 
   display: flex
   align-items: center
-  justify-content: space-between
     
   background-color: $white
   border-radius: $base-border-radius
@@ -24,18 +23,19 @@
     left: 27%
     height: 12px
 
-.todo-item__checkbox .ant-checkbox + span
-  padding-left: 16px
-  padding-right: 0
-
 .todo-item__checkbox .ant-checkbox-checked
   &::after 
     border-radius: 50%
 
 .todo-item__text
+  width: 100%
+  margin-left: 16px
+  font-size: 20px
   color: $black
+  cursor: pointer
 
 .todo-item__icons
+  margin-left: auto
   display: flex
   align-items: center
   font-size: 16px
