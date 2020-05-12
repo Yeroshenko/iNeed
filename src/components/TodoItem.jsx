@@ -1,5 +1,4 @@
 import React, { useRef } from 'react'
-// import { Checkbox } from 'antd'
 
 import { Checkbox } from 'components'
 import { CloseIcon } from 'icons'
@@ -11,18 +10,12 @@ const TodoItem = ({
   updateItem,
   showDetails
 }) => {
-  const checkAudio = useRef(null)
-  const uncheckAudio = useRef(null)
-
   const changeHandler = (id, completed) => {
     updateItem(id, { completed: !completed })
   }
 
   return (
     <li className='todo-item'>
-      {/* <audio ref={checkAudio} src={checkSound} preload='auto' />
-        <audio ref={uncheckAudio} src={uncheckSound} preload='auto' /> */}
-
       <Checkbox
         className='todo-item__checkbox'
         onChange={changeHandler.bind(this, id, completed)}
@@ -32,7 +25,6 @@ const TodoItem = ({
         {title}
       </span>
       <div className='todo-item__icons'>
-        {/* <EditIcon className='todo-item__icon' /> */}
         <CloseIcon
           className='todo-item__icon'
           onClick={deleteItem.bind(this, id)}
