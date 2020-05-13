@@ -4,22 +4,34 @@ import { Link } from 'react-router-dom'
 import { Form, Input, Button, Alert } from 'antd'
 import { MailOutlined, LockOutlined } from '@ant-design/icons'
 
-import { required, min } from 'utils/inputValidate'
+import { required, min, isEmail } from 'utils/inputValidate'
 
-const LoginForm = ({ onSubmit, error, loading, className }) => (
+const LoginForm = ({
+  hasError,
+  isLoading,
+  className,
+  onSubmit,
+  clearError
+}) => (
   <Form
     name='login-form'
     className={cn('auth-form', className)}
     onFinish={onSubmit}
     size='large'
   >
-    {error && (
+    {hasError && (
       <Form.Item>
-        <Alert message={error} type='error' showIcon />{' '}
+        <Alert message={'Пользователь не найден'} type='error' showIcon />
       </Form.Item>
     )}
 
-    <Form.Item name='email' rules={[required('Введите пожалуста ваш email!')]}>
+    <Form.Item
+      name='email'
+      rules={[
+        required('Введите пожалуста ваш email!'),
+        isEmail('Введите коректный E-mail')
+      ]}
+    >
       <Input prefix={<MailOutlined />} type='email' placeholder='E-mail' />
     </Form.Item>
     <Form.Item
@@ -37,11 +49,11 @@ const LoginForm = ({ onSubmit, error, loading, className }) => (
     </Form.Item>
 
     <Form.Item>
-      <Button type='primary' htmlType='submit' loading={loading}>
+      <Button type='primary' htmlType='submit' loading={isLoading}>
         Войти
       </Button>
     </Form.Item>
-    <Link to='/register'>
+    <Link to='/register' onClick={clearError}>
       <Button type='link'>Зарегистрироваться</Button>
     </Link>
   </Form>

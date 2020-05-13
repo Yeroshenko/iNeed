@@ -8,7 +8,7 @@ const initialState = {
 
 export default function listsReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_ALL: 
+    case SET_ALL:
       return {
         ...state,
         lists: action.lists
@@ -27,9 +27,9 @@ export const setLists = (lists) => ({ type: SET_ALL, lists })
 export const getLists = () => async (dispatch) => {
   try {
     const lists = await listsApi.getAll()
-    
+
     dispatch(setLists(lists))
   } catch(e) {}
-} 
+}
 
 

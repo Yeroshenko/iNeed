@@ -8,17 +8,17 @@ const initialState = {
 
 export default function detailsReducer(state = initialState, action) {
   switch (action.type) {
-    case SET_OPEN: 
+    case SET_OPEN:
       return {
         ...state,
-        open: action.open 
+        open: action.open
       }
-      
-    case SET_ITEM: 
+
+    case SET_ITEM:
       return {
         ...state,
         item: action.item
-      } 
+      }
 
     default:
       return state

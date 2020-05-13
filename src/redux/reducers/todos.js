@@ -34,20 +34,20 @@ export default function todosReducer(state = initialState, action) {
     case DELETE_ITEM:
       return {
         ...state,
-        todos: state.todos.filter(todo => todo.id !== action.todoId) 
+        todos: state.todos.filter(todo => todo.id !== action.todoId)
       }
 
-    case UPDATE_ITEM: 
+    case UPDATE_ITEM:
     return {
       ...state,
       todos: state.todos.map(todo => {
         if (todo.id === action.todoId) {
-          return { ...todo, ...action.payload} 
+          return { ...todo, ...action.payload}
         }
         return todo
       })
     }
-    
+
     default:
       return state
   }
@@ -68,7 +68,7 @@ export const getTodos = () => async (dispatch) => {
 
     dispatch(setTodos(todos))
   } catch(e) {}
-} 
+}
 
 export const createTodoItem = (todo) => async (dispatch) => {
   dispatch(setFeatching(true))
@@ -78,14 +78,14 @@ export const createTodoItem = (todo) => async (dispatch) => {
 
     dispatch(setTodo(newTodo))
   } catch(e) {}
-  
+
   dispatch(setFeatching(false))
 }
 
 export const deleteTodoItem = (todoId) => async (dispatch) => {
   try {
     const id = await todosApi.delete(todoId)
-    
+
     dispatch(deleteTodo(id))
   } catch(e) {}
 }

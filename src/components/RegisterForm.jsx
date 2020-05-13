@@ -4,22 +4,38 @@ import { Link } from 'react-router-dom'
 import { Form, Input, Button, Alert } from 'antd'
 import { MailOutlined, LockOutlined } from '@ant-design/icons'
 
-import { required, min, confirm } from 'utils/inputValidate'
+import { required, min, confirm, isEmail } from 'utils/inputValidate'
 
-const RegisterForm = ({ onSubmit, error, loading, className }) => (
+const RegisterForm = ({
+  hasError,
+  isLoading,
+  className,
+  onSubmit,
+  clearError
+}) => (
   <Form
     name='register-form'
     className={cn('auth-form', className)}
     onFinish={onSubmit}
     size='large'
   >
-    {error && (
+    {hasError && (
       <Form.Item>
-        <Alert message={error} type='error' showIcon />
+        <Alert
+          message={'Aкаунт с таким E-mail уже существует'}
+          type='error'
+          showIcon
+        />
       </Form.Item>
     )}
 
-    <Form.Item name='email' rules={[required('Введите пожалуста ваш email!')]}>
+    <Form.Item
+      name='email'
+      rules={[
+        required('Введите пожалуста ваш email!'),
+        isEmail('Введите коректный E-mail')
+      ]}
+    >
       <Input prefix={<MailOutlined />} type='email' placeholder='E-mail' />
     </Form.Item>
     <Form.Item
@@ -53,11 +69,11 @@ const RegisterForm = ({ onSubmit, error, loading, className }) => (
     </Form.Item>
 
     <Form.Item>
-      <Button type='primary' htmlType='submit' loading={loading}>
+      <Button type='primary' htmlType='submit' loading={isLoading}>
         Зарегистрироваться
       </Button>
     </Form.Item>
-    <Link to='/login'>
+    <Link to='/login' onClick={clearError}>
       <Button type='link'>Есть аккаунт</Button>
     </Link>
   </Form>

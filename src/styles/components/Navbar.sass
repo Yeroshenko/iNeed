@@ -1,8 +1,14 @@
+@import '../variables'
+
 .navbar
   height: 100%
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  background-color: $dark-blue
 
 .navbar__sider
-  min-height: 100%
+  flex: 1
 
 .navbar__sider .ant-menu-inline-collapsed > .ant-menu-item .anticon
   font-size: 18px
@@ -19,3 +25,11 @@
 
 .navbar__menu-separator
   opacity: .2
+
+.navbar__confirm .ant-modal-confirm-btns
+  width: 100%
+  display: flex
+  align-items: center
+
+  .ant-btn
+    width: 100%

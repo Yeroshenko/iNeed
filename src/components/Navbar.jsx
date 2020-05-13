@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
-import { Layout, Menu } from 'antd'
+import { Layout, Menu, Button, Modal } from 'antd'
 import {
   StarOutlined,
   HomeOutlined,
-  AlignLeftOutlined
+  AlignLeftOutlined,
+  ExclamationCircleOutlined
 } from '@ant-design/icons'
 
 import 'styles/components/Navbar.sass'
 
-const Navbar = ({ lists, menuClickHandler, defaultSelectedItem }) => {
+const Navbar = ({ lists, menuClickHandler, defaultSelectedItem, logout }) => {
   const [collapsed, setCollapsed] = useState(false)
 
   const toggleColapsed = () => setCollapsed(!collapsed)
@@ -28,6 +29,19 @@ const Navbar = ({ lists, menuClickHandler, defaultSelectedItem }) => {
     </Menu.Item>
   )
 
+  const showModal = () => {
+    Modal.confirm({
+      title: 'Вы действительно хотите выйти?',
+      icon: <ExclamationCircleOutlined />,
+      className: 'navbar__confirm',
+      okText: 'Да',
+      cancelText: 'Отменить',
+      onOk() {
+        logout()
+      }
+    })
+  }
+
   return (
     <div className='navbar'>
       <Layout.Sider
@@ -45,13 +59,14 @@ const Navbar = ({ lists, menuClickHandler, defaultSelectedItem }) => {
           onClick={menuClickHandler}
           className='navbar__menu'
         >
-          {/* {defaultMenuItems.map(item => menuItemCreator(item))} */}
+          {defaultMenuItems.map(item => menuItemCreator(item))}
 
-          {/* <hr className='navbar__menu-separator' /> */}
+          <hr className='navbar__menu-separator' />
 
           {lists && lists.map(list => menuItemCreator(list))}
         </Menu>
       </Layout.Sider>
+      <Button type='primary' onClick={showModal}>Logout</Button>
     </div>
   )
 }

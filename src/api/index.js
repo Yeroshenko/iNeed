@@ -1,4 +1,4 @@
-import { db } from 'firabase'
+import { db, auth } from 'firabase-config'
 
 const get = (collection) => {
   return db.collection(collection)
@@ -41,7 +41,7 @@ export const todosApi = {
       .then(doc => ({
         id: doc.id,
         ...doc.data()
-      })) 
+      }))
       .catch(error => {
         console.error('Error adding document: ', error)
       })
@@ -64,5 +64,21 @@ export const todosApi = {
 export const listsApi = {
   getAll() {
     return get('lists')
+  }
+}
+
+export const authApi = {
+  register(email, password) {
+    return auth.createUserWithEmailAndPassword(email, password)
+      .then(res => ({ email: res.user.email, id: res.user.uid }))
+      .catch(error => error)
+  },
+  login(email, password) {
+    return auth.signInWithEmailAndPassword(email, password)
+      .then(res => ({ email: res.user.email, id: res.user.uid }))
+      .catch(error => error)
+  },
+  logout() {
+    return auth.signOut()
   }
 }

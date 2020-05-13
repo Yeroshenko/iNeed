@@ -3,7 +3,7 @@ import { randomNumber } from './randomNumber'
 export const randomColor = () => {
   //  color in hsl format
   let h = randomNumber(0, 360) // hue
-  let s = randomNumber(42, 98) / 100 // saturation 
+  let s = randomNumber(42, 98) / 100 // saturation
   let l = randomNumber(40, 65) / 100 // lightness
 
   // convert hsl to hex
@@ -15,28 +15,28 @@ export const randomColor = () => {
   let b = 0
 
   if (0 <= h && h < 60) {
-    r = c 
-    g = x 
+    r = c
+    g = x
     b = 0
   } else if (60 <= h && h < 120) {
-    r = x 
-    g = c 
+    r = x
+    g = c
     b = 0
   } else if (120 <= h && h < 180) {
-    r = 0 
-    g = c 
+    r = 0
+    g = c
     b = x
   } else if (180 <= h && h < 240) {
-    r = 0 
-    g = x 
+    r = 0
+    g = x
     b = c
   } else if (240 <= h && h < 300) {
-    r = x 
-    g = 0 
+    r = x
+    g = 0
     b = c
   } else if (300 <= h && h < 360) {
-    r = c 
-    g = 0 
+    r = c
+    g = 0
     b = x
   }
 

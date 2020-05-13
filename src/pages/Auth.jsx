@@ -2,7 +2,8 @@ import React from 'react'
 import { Route } from 'react-router-dom'
 import { Typography } from 'antd'
 
-import { ShadowBlock, LoginForm, RegisterForm } from 'components'
+import { LoginForm, RegisterForm } from 'containers'
+import { ShadowBlock } from 'components'
 import 'styles/pages/Auth.sass'
 
 const { Title } = Typography
