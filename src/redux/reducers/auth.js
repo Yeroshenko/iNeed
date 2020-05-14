@@ -46,8 +46,8 @@ export const setUser = (user) => ({ type: SET_USER, user })
 export const checkAuth = () => async (dispatch) => {
   auth.onAuthStateChanged((user) => {
     if (user) {
-      const { email, uid } = user
-      dispatch(setUser({ email, uid }))
+      const { email, uid, photoURL } = user
+      dispatch(setUser({ email, uid, photoURL }))
     } else {
       dispatch(setUser(false))
     }

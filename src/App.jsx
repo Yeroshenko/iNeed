@@ -5,7 +5,6 @@ import { checkAuth } from 'redux/reducers/auth'
 import { useRoutes } from 'routes'
 
 const App = ({ checkAuth, user }) => {
-
   const routes = useRoutes(user)
 
   useEffect(() => {

@@ -6,15 +6,13 @@ import { LoginForm, RegisterForm } from 'containers'
 import { ShadowBlock } from 'components'
 import 'styles/pages/Auth.sass'
 
-const { Title } = Typography
-
 const Auth = () => {
   return (
     <section className='auth-page'>
       <ShadowBlock className='auth-page__inner'>
-        <Title level={2} className='auth-page__title'>
+        <Typography.Title level={2} className='auth-page__title'>
           ToDo mania
-        </Title>
+        </Typography.Title>
 
         <p className='auth-page__subtitle'>Умный тайм-менеджмент</p>
 
