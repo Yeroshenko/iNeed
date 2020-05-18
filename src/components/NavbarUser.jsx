@@ -7,7 +7,7 @@ import {
   ExclamationCircleOutlined
 } from '@ant-design/icons'
 
-import { EditProfileForm } from 'components'
+import { EditProfileForm } from 'containers'
 import 'styles/components/NavbarUser.sass'
 
 const NavbarUser = ({ user, className, logout }) => {
@@ -48,10 +48,15 @@ const NavbarUser = ({ user, className, logout }) => {
           src={user.photoURL}
           className='navbar-user__avatar'
         >
-          {user.email[0]}
+          {user.displayName ? user.displayName[0] : user.email[0]}
         </Avatar>
       </Dropdown>
-      <span className='navbar-user__email'>{user.email}</span>
+      <div className='navbar-user__info'>
+        {user.displayName && (
+          <span className='navbar-user__nickname'>{user.displayName}</span>
+        )}
+        <span className='navbar-user__email'>{user.email}</span>
+      </div>
       <EditProfileForm visible={showForm} toggleShowForm={toggleShowForm} />
     </div>
   )

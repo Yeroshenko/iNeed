@@ -1,4 +1,4 @@
-import { db, auth } from 'firabase-config'
+import { db, auth, storage } from 'firabase-config'
 
 const get = (collection) => {
   return db.collection(collection)
@@ -80,5 +80,17 @@ export const authApi = {
   },
   logout() {
     return auth.signOut()
+  },
+  updateUser(newInfo) {
+    return auth.currentUser.updateProfile(newInfo)
+  }
+}
+
+export const storageApi = {
+  uploadAvatar(avatarName, avatar) {
+    return storage.ref(`userAvatars/${avatarName}`).put(avatar)
+  },
+  getAvatar(avatarName) {
+    return storage.ref('userAvatars').child(avatarName).getDownloadURL()
   }
 }

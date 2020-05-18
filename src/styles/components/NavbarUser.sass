@@ -1,6 +1,8 @@
 @import '../variables'
 
 .navbar-user
+  display: flex
+  align-items: center
   text-overflow: ellipsis
   color: $white
   overflow: hidden
@@ -9,11 +11,22 @@
 
 .navbar-user__avatar.ant-avatar
   text-transform: uppercase
-  background-color: $primary
+  font-size: 20px
   font-weight: 600
+  background-color: $primary
   cursor: pointer
 
-.navbar-user__email
-  margin-left: 8px
-  color: $white
+.navbar-user__info
+  display: flex
+  flex-direction: column
+  margin-left: 12px
+  justify-content: center
+  line-height: 1.2
+
+
+.navbar-user__nickname
   font-size: 18px
+
+.navbar-user__email
+  font-size: 16px
+  opacity: .65

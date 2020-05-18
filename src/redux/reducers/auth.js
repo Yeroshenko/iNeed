@@ -3,6 +3,7 @@ import { auth } from 'firabase-config'
 
 const SET_LOADING = 'AUTH:SET_LOADING'
 const SET_USER = 'AUTH:SET_USER'
+const SET_USER_INFO = 'AUTH:SET_USER_INFO'
 const SET_ERROR = 'AUTH:SET_ERROR'
 
 const initialState = {
@@ -31,6 +32,15 @@ export default function detailsReducer(state = initialState, action) {
         user: action.user
       }
 
+    case SET_USER_INFO:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          ...action.userInfo
+        }
+      }
+
     default:
       return state
   }
@@ -40,14 +50,15 @@ export default function detailsReducer(state = initialState, action) {
 export const setLoading = (isLoading) => ({ type: SET_LOADING, isLoading })
 export const setError = (hasError) => ({ type: SET_ERROR, hasError })
 export const setUser = (user) => ({ type: SET_USER, user })
+export const setUserInfo = (userInfo) => ({ type: SET_USER_INFO, userInfo })
 
 
 // Thank creators
 export const checkAuth = () => async (dispatch) => {
   auth.onAuthStateChanged((user) => {
     if (user) {
-      const { email, uid, photoURL } = user
-      dispatch(setUser({ email, uid, photoURL }))
+      const { email, displayName, uid, photoURL } = user
+      dispatch(setUser({ email, displayName, uid, photoURL }))
     } else {
       dispatch(setUser(false))
     }
@@ -65,9 +76,7 @@ export const login = (email, password) => async (dispatch) => {
   dispatch(setLoading(false))
 }
 
-export const logout = () => async (dispatch) => {
-  await authApi.logout()
-}
+export const logout = () => async (dispatch) => await authApi.logout()
 
 export const register = (email, password) => async (dispatch) => {
   dispatch(setError(false))
@@ -78,7 +87,11 @@ export const register = (email, password) => async (dispatch) => {
   if (res.code) dispatch(setError(true))
 
   dispatch(setLoading(false))
-
 }
 
 export const clearError = () => (dispatch) => dispatch(setError(false))
+
+export const updateUserInfo = (newInfo) => async (dispatch) => {
+  await authApi.updateUser(newInfo)
+  dispatch(setUserInfo(newInfo))
+}

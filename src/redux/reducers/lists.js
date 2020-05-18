@@ -25,11 +25,9 @@ export const setLists = (lists) => ({ type: SET_ALL, lists })
 
 // Thank creators
 export const getLists = () => async (dispatch) => {
-  try {
-    const lists = await listsApi.getAll()
+  const lists = await listsApi.getAll()
 
-    dispatch(setLists(lists))
-  } catch(e) {}
+  dispatch(setLists(lists))
 }
 
 

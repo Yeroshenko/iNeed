@@ -1,33 +1,65 @@
 import React from 'react'
-import { Modal, Form, Input } from 'antd'
+import { Modal, Form, Input, Avatar, Spin } from 'antd'
 
-const EditProfileForm = ({ visible, toggleShowForm }) => {
-  const [form] = Form.useForm()
+import { InputFile } from 'components'
+import 'styles/components/EditProfileForm.sass'
 
-  return (
-    <Modal
-      visible={visible}
-      title='Настройки профиля'
-      okText='Сохранить'
-      cancelText='Отменить'
-      onCancel={toggleShowForm}
+const EditProfileForm = ({
+  visible,
+  cancelModal,
+  currentAvatar,
+  isUploading,
+  uploadAvatar,
+  clearAvalar,
+  formInstance,
+  submitModal,
+  initialValues,
+  initailAvatar
+}) => (
+  <Modal
+    visible={visible}
+    title='Настройки профиля'
+    cancelText='Отменить'
+    okText='Сохранить'
+    onCancel={cancelModal}
+    onOk={submitModal}
+  >
+    <Form
+      form={formInstance}
+      className='edit-profile-form'
+      layout='vertical'
+      name='userForm'
+      initialValues={initialValues}
     >
-      <Form form={form} layout='vertical' name='userForm'>
-        <Form.Item name='nickname' label='Никнейм'>
-          <Input placeholder='Введите свой никнейм' />
-        </Form.Item>
-        <Form.Item name='email' label='E-mail'>
-          <Input placeholder='Введите новый E-mail' />
-        </Form.Item>
-        <Form.Item name='password' label='Пароль'>
-          <Input placeholder='Введите новый пароль' />
-        </Form.Item>
-        <Form.Item name='password' label='Повторите пароль'>
-          <Input placeholder='Повторно введите новый пароль' />
-        </Form.Item>
-      </Form>
-    </Modal>
-  )
-}
+      <Form.Item name='displayName' label='Никнейм'>
+        <Input placeholder='Введите новый никнейм' />
+      </Form.Item>
+
+      <Form.Item name='photoURL' label='Аватар'>
+        <div className='edit-profile-form__upload'>
+          <Spin
+            className='edit-profile-form__spin'
+            spinning={isUploading}
+          >
+            <Avatar
+              className='edit-profile-form__avatar'
+              shape='square'
+              size='large'
+              src={currentAvatar ? currentAvatar : initailAvatar}
+            />
+          </Spin>
+          <InputFile
+            id='userAvatar'
+            accept='.png, .jpg, .jpeg'
+            setFile={uploadAvatar}
+            cleareFile={clearAvalar}
+          >
+            Загрузить новую автарку
+          </InputFile>
+        </div>
+      </Form.Item>
+    </Form>
+  </Modal>
+)
 
 export default EditProfileForm
