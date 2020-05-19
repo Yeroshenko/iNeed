@@ -8,6 +8,7 @@ import {
 
 import { NavbarUser } from 'components'
 import 'styles/components/Navbar.sass'
+import ListCreator from './ListCreator'
 
 const Navbar = ({ lists, menuClickHandler, currentItem, logout, user }) => {
   const [collapsed, setCollapsed] = useState(false)
@@ -53,6 +54,7 @@ const Navbar = ({ lists, menuClickHandler, currentItem, logout, user }) => {
 
           {lists && lists.map(list => menuItemCreator(list))}
         </Menu>
+        <ListCreator />
       </Layout.Sider>
     </div>
   )

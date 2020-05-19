@@ -8,7 +8,7 @@ const TodoCreatorContainer = ({ listId, featching, createTodoItem }) => {
   const [createMode, setCreateMode] = useState(false)
 
   const toggleCreateMode = () => setCreateMode(!createMode)
-  
+
   const onSubmit = async ({ title }) => {
     if (title) {
       await createTodoItem({ title, listId })
