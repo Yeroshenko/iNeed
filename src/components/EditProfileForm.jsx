@@ -1,5 +1,6 @@
 import React from 'react'
 import { Modal, Form, Input, Avatar, Spin } from 'antd'
+import { UserOutlined } from '@ant-design/icons'
 
 import { InputFile } from 'components'
 import 'styles/components/EditProfileForm.sass'
@@ -45,6 +46,7 @@ const EditProfileForm = ({
               className='edit-profile-form__avatar'
               shape='square'
               size='large'
+              icon={<UserOutlined />}
               src={currentAvatar ? currentAvatar : initailAvatar}
             />
           </Spin>
