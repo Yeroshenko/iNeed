@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 import { getTodos } from 'redux/reducers/todos'
 import { TodoList } from 'components'
-import { useParams } from 'react-router-dom'
 
-const TodoListContainer = ({ todos, lists, detailsIsOpen, getTodos }) => {
+const TodoListContainer = ({ todos, lists, getTodos }) => {
   const [currentTodos, setCurrentTodos] = useState([])
   const [currentList, setCurrentList] = useState({})
 
@@ -26,13 +26,12 @@ const TodoListContainer = ({ todos, lists, detailsIsOpen, getTodos }) => {
     setCurrentList(currentListCreator(lists, listId))
   }, [todos, lists, listId])
 
-  return <TodoList todos={currentTodos} list={currentList} detailsIsOpen={detailsIsOpen} />
+  return <TodoList todos={currentTodos} list={currentList} />
 }
 
 const mapStateToProps = state => ({
   todos: state.todos.todos,
-  lists: state.lists.lists,
-  detailsIsOpen: state.details.open
+  lists: state.lists.lists
 })
 
 export default connect(mapStateToProps, { getTodos })(TodoListContainer)

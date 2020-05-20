@@ -8,7 +8,6 @@ const TodoItem = ({
   todo: { id, title, completed },
   deleteItem,
   updateItem,
-  showDetails
 }) => {
   const changeHandler = (id, completed) => {
     updateItem(id, { completed: !completed })
@@ -21,7 +20,7 @@ const TodoItem = ({
         onChange={changeHandler.bind(this, id, completed)}
         checked={completed}
       />
-      <span className='todo-item__text' onClick={showDetails.bind(this, id)}>
+      <span className='todo-item__text' >
         {title}
       </span>
       <div className='todo-item__icons'>

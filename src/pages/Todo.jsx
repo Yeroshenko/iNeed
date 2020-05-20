@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navbar, TodoList, TodoDetails } from 'containers'
+import { Navbar, TodoList } from 'containers'
 import { Switch, Route } from 'react-router-dom'
 
 import 'styles/pages/Todo.sass'
@@ -13,7 +13,6 @@ const Todo = () => {
         <Route path='/important' component={TodoList} />
         <Route path='/:listId' component={TodoList} />
       </Switch>
-      <TodoDetails />
     </div>
   )
 }
