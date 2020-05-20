@@ -2,6 +2,7 @@ import React from 'react'
 import cn from 'classnames'
 import { Form, Input, Button } from 'antd'
 
+import { max } from 'utils/inputValidate'
 import { PlusIcon } from 'icons'
 import 'styles/components/TodoCreator.sass'
 
@@ -21,7 +22,11 @@ const TodoCreator = ({ featching, createMode, onSubmit, toggleCreateMode }) => (
         className='todo-creator__form'
         onFinish={onSubmit}
       >
-        <Form.Item name='title' className='todo-creator__input'>
+        <Form.Item
+          name='title'
+          className='todo-creator__input'
+          rules={[max(512, 'Максимальная длина задачи 512 символов')]}
+        >
           <Input autoFocus placeholder='Текст задачи' />
         </Form.Item>
 

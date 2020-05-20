@@ -22,7 +22,7 @@ const Checkbox = ({ onChange, checked, ...props }) => {
     <span>
       <audio ref={checkAudio} src={checkSound} preload='auto' />
       <audio ref={uncheckAudio} src={uncheckSound} preload='auto' />
-      
+
       <BaseCheckbox onChange={changeHandler} checked={checked} {...props} />
     </span>
   )

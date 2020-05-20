@@ -41,6 +41,7 @@ const EditProfileFormContainer = ({
 
   const cancelModal = () => {
     toggleShowForm()
+    formInstance.setFieldsValue(initialValues)
     clearAvalar()
   }
 

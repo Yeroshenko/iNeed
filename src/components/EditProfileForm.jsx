@@ -38,10 +38,7 @@ const EditProfileForm = ({
 
       <Form.Item name='photoURL' label='Аватар'>
         <div className='edit-profile-form__upload'>
-          <Spin
-            className='edit-profile-form__spin'
-            spinning={isUploading}
-          >
+          <Spin className='edit-profile-form__spin' spinning={isUploading}>
             <Avatar
               className='edit-profile-form__avatar'
               shape='square'
