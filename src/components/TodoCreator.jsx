@@ -37,7 +37,7 @@ const TodoCreator = ({ featching, createMode, onSubmit, toggleCreateMode }) => (
             loading={featching}
             htmlType='submit'
           >
-            Добавить задачу
+            {featching ? 'Добавление задачи' : 'Добавить задачу'}
           </Button>
           <Button
             className='todo-creator__button'

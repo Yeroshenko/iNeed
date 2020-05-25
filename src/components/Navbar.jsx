@@ -10,7 +10,15 @@ import { NavbarUser } from 'components'
 import 'styles/components/Navbar.sass'
 import ListCreator from './ListCreator'
 
-const Navbar = ({ lists, menuClickHandler, currentItem, logout, user }) => {
+const Navbar = ({
+  lists,
+  menuClickHandler,
+  currentItem,
+  logout,
+  creteList,
+  user,
+  featching
+}) => {
   const [collapsed, setCollapsed] = useState(false)
 
   const toggleColapsed = () => setCollapsed(!collapsed)
@@ -54,7 +62,7 @@ const Navbar = ({ lists, menuClickHandler, currentItem, logout, user }) => {
 
           {lists && lists.map(list => menuItemCreator(list))}
         </Menu>
-        <ListCreator />
+        <ListCreator creteList={creteList} featching={featching} />
       </Layout.Sider>
     </div>
   )

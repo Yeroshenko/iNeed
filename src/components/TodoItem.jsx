@@ -39,11 +39,12 @@ const TodoItem = ({
             label='Название задачи'
             rules={[max(512, 'Максимальная длина задачи 512 символов')]}
           >
-            <Input
+            <Input.TextArea
               autoFocus
               className='todo-item__editor-input'
               placeholder='Введите название задачи'
               onPressEnter={submitModal}
+              autoSize={{ minRows: 1, maxRows: 10 }}
             />
           </Form.Item>
         </Form>

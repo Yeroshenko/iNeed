@@ -64,6 +64,31 @@ export const todosApi = {
 export const listsApi = {
   getAll() {
     return get('lists')
+  },
+  create(data) {
+    return db.collection('lists')
+    .add({ ...data})
+    .then(docRef => docRef.get())
+    .then(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }))
+    .catch(error => {
+      console.error('Error adding document: ', error)
+    })
+  },
+  delete(listId) {
+    return db.collection('lists').doc(listId).delete()
+      .then(() => listId)
+      .catch(error => {
+        console.error('Error removing document: ', error)
+      })
+  },
+  update(listId, data) {
+    return db.collection('lists').doc(listId).update(data)
+      .catch(error => {
+        console.error('Error updating document: ', error)
+      })
   }
 }
 

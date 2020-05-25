@@ -34,7 +34,7 @@ const EditProfileFormContainer = ({
       }
     }
 
-    updateUserInfo(payload)
+    await updateUserInfo(payload)
     toggleShowForm()
     clearAvalar()
   }
