@@ -15,11 +15,10 @@ const NavbarUser = ({ user, className, logout }) => {
 
   const toggleShowForm = () => setShowForm(!showForm)
 
-  const showModal = () => {
+  const logoutModal = () => {
     Modal.confirm({
       title: 'Вы действительно хотите выйти?',
       icon: <ExclamationCircleOutlined />,
-      className: 'navbar__confirm',
       okText: 'Да',
       cancelText: 'Отменить',
       onOk() {
@@ -34,7 +33,7 @@ const NavbarUser = ({ user, className, logout }) => {
         <SettingOutlined />
         <span>Настройки профиля</span>
       </Menu.Item>
-      <Menu.Item onClick={showModal}>
+      <Menu.Item onClick={logoutModal}>
         <LogoutOutlined />
         <span>Выйти из аккаунта</span>
       </Menu.Item>

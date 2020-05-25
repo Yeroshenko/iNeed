@@ -38,15 +38,15 @@ export default function todosReducer(state = initialState, action) {
       }
 
     case UPDATE_ITEM:
-    return {
-      ...state,
-      todos: state.todos.map(todo => {
-        if (todo.id === action.todoId) {
-          return { ...todo, ...action.payload}
-        }
-        return todo
-      })
-    }
+      return {
+        ...state,
+        todos: state.todos.map(todo => {
+          if (todo.id === action.todoId) {
+            return { ...todo, ...action.payload}
+          }
+          return todo
+        })
+      }
 
     default:
       return state
@@ -63,37 +63,28 @@ export const setFeatching = (featching) => ({ type: SET_FEATCHING, featching })
 
 // Thank creators
 export const getTodos = () => async (dispatch) => {
-  try {
-    const todos = await todosApi.getAll()
+  const todos = await todosApi.getAll()
 
-    dispatch(setTodos(todos))
-  } catch(e) {}
+  dispatch(setTodos(todos))
 }
 
 export const createTodoItem = (todo) => async (dispatch) => {
   dispatch(setFeatching(true))
 
-  try {
-    const newTodo = await todosApi.create(todo)
-
-    dispatch(setTodo(newTodo))
-  } catch(e) {}
+  const newTodo = await todosApi.create(todo)
+  dispatch(setTodo(newTodo))
 
   dispatch(setFeatching(false))
 }
 
-export const deleteTodoItem = (todoId) => async (dispatch) => {
-  try {
-    const id = await todosApi.delete(todoId)
+export const updateTodoItem = (todoId, data) => async (dispatch) => {
+  dispatch(updateTodo(todoId, data))
 
-    dispatch(deleteTodo(id))
-  } catch(e) {}
+  await todosApi.update(todoId, data)
 }
 
-export const updateTodoItem = (todoId, data) => async (dispatch) => {
-  try {
-    dispatch(updateTodo(todoId, data))
+export const deleteTodoItem = (todoId) => async (dispatch) => {
+  dispatch(deleteTodo(todoId))
 
-    await todosApi.update(todoId, data)
-  } catch(e) {}
+  await todosApi.delete(todoId)
 }

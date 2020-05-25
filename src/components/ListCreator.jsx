@@ -16,6 +16,7 @@ const ListCreator = ({ featching, creteList }) => {
     const { title } = await formInstance.validateFields()
 
     if (title) await creteList(title)
+
     toggleCreateMode()
     formInstance.resetFields()
   }
@@ -47,20 +48,20 @@ const ListCreator = ({ featching, creteList }) => {
           className='list-creator__form'
           form={formInstance}
         >
-          <Form.Item
-            name='title'
-            label='Название списка'
-            rules={[max(30, 'Максимальная длина списка 30 символов')]}
-          >
-            {createMode && (
+          {createMode && (
+            <Form.Item
+              name='title'
+              label='Название списка'
+              rules={[max(30, 'Максимальная длина списка 30 символов')]}
+            >
               <Input
                 autoFocus
                 className='list-creator__input'
                 placeholder='Введите название списка'
                 onPressEnter={submitModal}
               />
-            )}
-          </Form.Item>
+            </Form.Item>
+          )}
         </Form>
       </Modal>
     </div>

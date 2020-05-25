@@ -2,6 +2,7 @@
 
 .navbar
   height: 100%
+  z-index: 2
 
 .navbar__sider
   flex: 1
@@ -23,14 +24,10 @@
 .navbar__menu-separator
   opacity: .2
 
-.navbar__confirm .ant-modal-confirm-btns
-  width: 100%
-  display: flex
-  align-items: center
-
-  .ant-btn
-    width: 100%
-
 .navbar__user
   padding: 12px
   padding-top: 24px
+
+@media screen and ( max-width: 990px  )
+  .navbar
+    position: absolute
