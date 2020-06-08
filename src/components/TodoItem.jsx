@@ -1,7 +1,7 @@
 import React from 'react'
 import { Modal, Form, Input } from 'antd'
 
-import { max } from 'utils/inputValidate'
+import { max } from 'utils'
 import { CloseIcon, EditIcon } from 'icons'
 import { Checkbox } from 'components'
 import 'styles/components/TodoItem.sass'

@@ -78,9 +78,9 @@ export const creteList = (listName) => async (dispatch) => {
 export const updateListTitle = (listId, newTitle) => async (dispatch) => {
   dispatch(setFeatching(true))
 
-  const res = listsApi.update(listId, { title : newTitle })
+  await listsApi.update(listId, { title : newTitle })
 
-  console.log(res)
+  dispatch(updateList(listId, { title: newTitle }))
 
   dispatch(setFeatching(false))
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import cn from 'classnames'
 import { Form, Input, Button } from 'antd'
 
-import { max } from 'utils/inputValidate'
+import { max } from 'utils'
 import { PlusIcon } from 'icons'
 import 'styles/components/TodoCreator.sass'
 

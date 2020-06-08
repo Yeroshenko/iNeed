@@ -2,18 +2,29 @@ import React, { useEffect, useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { ExclamationCircleOutlined } from '@ant-design/icons'
-import { Modal } from 'antd'
+import { Modal, Form } from 'antd'
 
 import { getTodos } from 'redux/reducers/todos'
-import { deleteListItem } from 'redux/reducers/lists'
+import { deleteListItem, updateListTitle } from 'redux/reducers/lists'
 import { TodoList } from 'components'
 
-const TodoListContainer = ({ todos, lists, getTodos, deleteListItem }) => {
+const TodoListContainer = ({
+  todos,
+  lists,
+  featching,
+  getTodos,
+  deleteListItem,
+  updateListTitle
+}) => {
   const [currentTodos, setCurrentTodos] = useState([])
   const [currentList, setCurrentList] = useState({})
+  const [editMode, setEditMode] = useState(false)
 
   const history = useHistory()
   const listId = useParams().listId
+  const [formInstance] = Form.useForm()
+
+  const toggleEditMode = () => setEditMode(!editMode)
 
   const currentTodosCreator = (todos, listId) =>
     todos.filter(item => item.listId === listId)
@@ -43,16 +54,46 @@ const TodoListContainer = ({ todos, lists, getTodos, deleteListItem }) => {
     })
   }
 
+  const submitModal = async () => {
+    const values = await formInstance.validateFields()
+
+    if (values.title) {
+      updateListTitle(currentList.id, values.title)
+    } else {
+      formInstance.setFieldsValue({ title: currentList.title })
+    }
+
+    toggleEditMode()
+  }
+
+  const cancelModal = () => {
+    toggleEditMode()
+    formInstance.setFieldsValue({ title: currentList.title })
+  }
+
   return (
-    <TodoList todos={currentTodos} list={currentList} deleteList={deleteList} />
+    <TodoList
+      todos={currentTodos}
+      list={currentList}
+      formInstance={formInstance}
+      featching={featching}
+      editMode={editMode}
+      submitModal={submitModal}
+      cancelModal={cancelModal}
+      deleteList={deleteList}
+      toggleEditMode={toggleEditMode}
+    />
   )
 }
 
 const mapStateToProps = state => ({
   todos: state.todos.todos,
-  lists: state.lists.lists
+  lists: state.lists.lists,
+  featching: state.lists.featching
 })
 
-export default connect(mapStateToProps, { getTodos, deleteListItem })(
-  TodoListContainer
-)
+export default connect(mapStateToProps, {
+  getTodos,
+  deleteListItem,
+  updateListTitle
+})(TodoListContainer)

@@ -1,4 +1,4 @@
-import { compressionFromAvatar } from 'utils/imageCompression'
+import { compressionFromAvatar } from 'utils'
 import { storageApi } from 'api'
 
 const SET_CURRENT_AVATAR = 'STORAGE:SET_CURRENT_AVATAR'

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Input, Modal } from 'antd'
 
-import { max } from 'utils/inputValidate'
+import { max } from 'utils'
 import { PlusIcon } from 'icons'
 import 'styles/components/ListCreator.sass'
 

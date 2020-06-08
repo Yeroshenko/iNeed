@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Form, Input, Button, Alert } from 'antd'
 import { MailOutlined, LockOutlined } from '@ant-design/icons'
 
-import { required, min, confirm, isEmail } from 'utils/inputValidate'
+import { required, min, confirm, isEmail } from 'utils'
 
 const RegisterForm = ({
   hasError,
