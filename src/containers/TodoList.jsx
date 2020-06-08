@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { ExclamationCircleOutlined } from '@ant-design/icons'
+import { Modal } from 'antd'
 
 import { getTodos } from 'redux/reducers/todos'
 import { deleteListItem } from 'redux/reducers/lists'
@@ -19,11 +21,6 @@ const TodoListContainer = ({ todos, lists, getTodos, deleteListItem }) => {
   const currentListCreator = (lists, listId) =>
     lists.find(item => item.id === listId)
 
-  const deleteList = (listId) => {
-    deleteListItem(listId)
-    history.push('/tasks')
-  }
-
   useEffect(() => {
     getTodos()
   }, [getTodos])
@@ -33,12 +30,21 @@ const TodoListContainer = ({ todos, lists, getTodos, deleteListItem }) => {
     setCurrentList(currentListCreator(lists, listId))
   }, [todos, lists, listId])
 
+  const deleteList = () => {
+    Modal.confirm({
+      title: 'Вы действительно хотите удалить список?',
+      icon: <ExclamationCircleOutlined />,
+      okText: 'Да',
+      cancelText: 'Отменить',
+      onOk() {
+        deleteListItem(listId)
+        history.push('/tasks')
+      }
+    })
+  }
+
   return (
-    <TodoList
-      todos={currentTodos}
-      list={currentList}
-      deleteList={deleteList}
-    />
+    <TodoList todos={currentTodos} list={currentList} deleteList={deleteList} />
   )
 }
 
