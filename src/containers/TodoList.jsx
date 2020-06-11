@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { ExclamationCircleOutlined } from '@ant-design/icons'
 import { Modal, Form } from 'antd'
 
 import { getTodos } from 'redux/reducers/todos'
 import { deleteListItem, updateListTitle } from 'redux/reducers/lists'
+import { ExclamationCircleOutlinedIcon } from 'icons'
 import { TodoList } from 'components'
 
 const TodoListContainer = ({
@@ -44,7 +44,7 @@ const TodoListContainer = ({
   const deleteList = () => {
     Modal.confirm({
       title: 'Вы действительно хотите удалить список?',
-      icon: <ExclamationCircleOutlined />,
+      icon: <ExclamationCircleOutlinedIcon />,
       okText: 'Да',
       cancelText: 'Отменить',
       onOk() {

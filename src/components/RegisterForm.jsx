@@ -2,9 +2,9 @@ import React from 'react'
 import cn from 'classnames'
 import { Link } from 'react-router-dom'
 import { Form, Input, Button, Alert } from 'antd'
-import { MailOutlined, LockOutlined } from '@ant-design/icons'
 
 import { required, min, confirm, isEmail } from 'utils'
+import { MailOutlinedIcon, LockOutlinedIcon } from 'icons'
 
 const RegisterForm = ({
   hasError,
@@ -36,7 +36,7 @@ const RegisterForm = ({
         isEmail('Введите коректный E-mail')
       ]}
     >
-      <Input prefix={<MailOutlined />} type='email' placeholder='E-mail' />
+      <Input prefix={<MailOutlinedIcon />} type='email' placeholder='E-mail' />
     </Form.Item>
     <Form.Item
       name='password'
@@ -47,7 +47,7 @@ const RegisterForm = ({
       ]}
     >
       <Input.Password
-        prefix={<LockOutlined />}
+        prefix={<LockOutlinedIcon />}
         type='password'
         placeholder='Пароль'
       />
@@ -62,7 +62,7 @@ const RegisterForm = ({
       ]}
     >
       <Input.Password
-        prefix={<LockOutlined />}
+        prefix={<LockOutlinedIcon />}
         type='password'
         placeholder='Повторите пароль'
       />

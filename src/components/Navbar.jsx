@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
 import { Layout, Menu } from 'antd'
-import {
-  StarOutlined,
-  HomeOutlined,
-  AlignLeftOutlined
-} from '@ant-design/icons'
 
-import { NavbarUser } from 'components'
+import {
+  StarOutlinedIcon,
+  HomeOutlinedIcon,
+  AlignLeftOutlinedIcon
+} from 'icons'
+import { NavbarUser, ListCreator } from 'components'
 import 'styles/components/Navbar.sass'
-import ListCreator from './ListCreator'
 
 const Navbar = ({
   lists,
@@ -24,15 +23,15 @@ const Navbar = ({
   const toggleColapsed = () => setCollapsed(!collapsed)
 
   const defaultMenuItems = [
-    { title: 'Все задачи', id: 'tasks', icon: <HomeOutlined /> },
-    { title: 'Важные', id: 'important', icon: <StarOutlined /> }
+    { title: 'Все задачи', id: 'tasks', icon: <HomeOutlinedIcon /> },
+    { title: 'Важные', id: 'important', icon: <StarOutlinedIcon /> }
   ]
 
   const menuItemCreator = ({ id, icon, title }) => (
     <Menu.Item
       key={id}
       className='navbar__menu-item'
-      icon={icon || <AlignLeftOutlined />}
+      icon={icon || <AlignLeftOutlinedIcon />}
     >
       <span className='navbar__menu-text'>{title}</span>
     </Menu.Item>

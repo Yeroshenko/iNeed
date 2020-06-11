@@ -59,27 +59,33 @@ const TodoItem = ({
       <span className='todo-item__text'>{title}</span>
     </Checkbox>
     <div className='todo-item__icons'>
-      <Tooltip title='Добавить в важное'>
-        {important ? (
-          <StarFilledIcon
-            className='todo-item__icon'
-            onClick={toggleImportant.bind(this, id, important)}
-          />
-        ) : (
-          <StarOutlinedIcon
-            className='todo-item__icon'
-            onClick={toggleImportant.bind(this, id, important)}
-          />
-        )}
+      <Tooltip title='Добавить в важные'>
+        <span>  {/* special for fix Tooltip bug */}
+          {important ? (
+            <StarFilledIcon
+              className='todo-item__icon'
+              onClick={toggleImportant.bind(this, id, important)}
+            />
+          ) : (
+            <StarOutlinedIcon
+              className='todo-item__icon'
+              onClick={toggleImportant.bind(this, id, important)}
+            />
+          )}
+        </span>
       </Tooltip>
       <Tooltip title='Редактировать задачу'>
-        <EditIcon className='todo-item__icon' onClick={toggleEditMode} />
+        <span> {/* special for fix Tooltip bug */}
+          <EditIcon className='todo-item__icon' onClick={toggleEditMode} />
+        </span>
       </Tooltip>
       <Tooltip title='Удалить задачу'>
-        <CloseIcon
-          className='todo-item__icon'
-          onClick={deleteItem.bind(this, id)}
-        />
+        <span> {/* special for fix Tooltip bug */}
+          <CloseIcon
+            className='todo-item__icon'
+            onClick={deleteItem.bind(this, id)}
+          />
+        </span>
       </Tooltip>
     </div>
   </li>

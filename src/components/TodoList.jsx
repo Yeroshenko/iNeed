@@ -1,9 +1,8 @@
 import React from 'react'
-import { EditOutlined, DeleteOutlined } from '@ant-design/icons'
 import { Dropdown, Menu, Modal, Form, Input } from 'antd'
 
 import { randomColor, max } from 'utils'
-import { MoreIcon } from 'icons'
+import { MoreIcon, EditOutlinedIcon, DeleteOutlinedIcon } from 'icons'
 import { TodoCreator, TodoItem } from 'containers'
 import 'styles/components/TodoList.sass'
 
@@ -21,11 +20,11 @@ const TodoList = ({
   const menu = (
     <Menu>
       <Menu.Item onClick={toggleEditMode}>
-        <EditOutlined />
+        <EditOutlinedIcon />
         <span>Редактировать список</span>
       </Menu.Item>
       <Menu.Item onClick={deleteList}>
-        <DeleteOutlined />
+        <DeleteOutlinedIcon />
         <span>Удалить список</span>
       </Menu.Item>
     </Menu>
