@@ -1,16 +1,17 @@
 import React from 'react'
-import { Modal, Form, Input } from 'antd'
+import { Modal, Form, Input, Tooltip } from 'antd'
 
 import { max } from 'utils'
-import { CloseIcon, EditIcon } from 'icons'
+import { CloseIcon, EditIcon, StarOutlinedIcon, StarFilledIcon } from 'icons'
 import { Checkbox } from 'components'
 import 'styles/components/TodoItem.sass'
 
 const TodoItem = ({
-  todo: { id, title, completed },
+  todo: { id, title, completed, important },
   deleteItem,
   editMode,
   toggleEditMode,
+  toggleImportant,
   initialValues,
   formInstance,
   checkHandler,
@@ -58,12 +59,28 @@ const TodoItem = ({
       <span className='todo-item__text'>{title}</span>
     </Checkbox>
     <div className='todo-item__icons'>
-      <EditIcon className='todo-item__icon' onClick={toggleEditMode} />
-
-      <CloseIcon
-        className='todo-item__icon'
-        onClick={deleteItem.bind(this, id)}
-      />
+      <Tooltip title='Добавить в важное'>
+        {important ? (
+          <StarFilledIcon
+            className='todo-item__icon'
+            onClick={toggleImportant.bind(this, id, important)}
+          />
+        ) : (
+          <StarOutlinedIcon
+            className='todo-item__icon'
+            onClick={toggleImportant.bind(this, id, important)}
+          />
+        )}
+      </Tooltip>
+      <Tooltip title='Редактировать задачу'>
+        <EditIcon className='todo-item__icon' onClick={toggleEditMode} />
+      </Tooltip>
+      <Tooltip title='Удалить задачу'>
+        <CloseIcon
+          className='todo-item__icon'
+          onClick={deleteItem.bind(this, id)}
+        />
+      </Tooltip>
     </div>
   </li>
 )

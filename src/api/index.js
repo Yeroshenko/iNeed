@@ -36,7 +36,7 @@ export const todosApi = {
   },
   create(data) {
     return db.collection('todos')
-      .add({ ...data, completed: false })
+      .add({ ...data, completed: false, important: false })
       .then(docRef => docRef.get())
       .then(doc => ({
         id: doc.id,

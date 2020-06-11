@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { Form } from 'antd'
+import { Form, message } from 'antd'
 
 import { deleteTodoItem, updateTodoItem } from 'redux/reducers/todos'
 import { TodoItem } from 'components'
@@ -17,11 +17,21 @@ const TodoItemContainer = ({ todo, deleteTodoItem, updateTodoItem }) => {
     updateTodoItem(id, { completed: !completed })
   }
 
+  const toggleImportant = (id, important) => {
+    updateTodoItem(id, { important: !important })
+
+    let messageText = ''
+    important
+      ? (messageText = 'Удаленно из важных')
+      : (messageText = 'Добавленно в важные')
+    message.success(messageText)
+  }
+
   const submitModal = async () => {
     const values = await formInstance.validateFields()
 
     if (values.title) {
-     updateTodoItem(todo.id, values)
+      updateTodoItem(todo.id, values)
     } else {
       formInstance.setFieldsValue(initialValues)
     }
@@ -41,6 +51,7 @@ const TodoItemContainer = ({ todo, deleteTodoItem, updateTodoItem }) => {
       updateItem={updateTodoItem}
       editMode={editMode}
       toggleEditMode={toggleEditMode}
+      toggleImportant={toggleImportant}
       initialValues={initialValues}
       formInstance={formInstance}
       checkHandler={checkHandler}
