@@ -4,13 +4,10 @@ import { Form, Input, Button } from 'antd'
 
 import { max } from 'utils'
 import { PlusIcon } from 'icons'
-import { useOutsideClick } from 'hooks'
 import 'styles/components/TodoCreator.sass'
 
 const TodoCreator = ({ featching, createMode, onSubmit, toggleCreateMode }) => {
   const todoCreatorRef = useRef()
-
-  useOutsideClick(todoCreatorRef, toggleCreateMode, createMode)
 
   return (
     <div
