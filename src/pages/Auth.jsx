@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route } from 'react-router-dom'
-import { Typography } from 'antd'
+import { Typography, notification } from 'antd'
 
 import { LoginForm, RegisterForm } from 'containers'
 import { ShadowBlock } from 'components'
 import 'styles/pages/Auth.sass'
 
 const Auth = () => {
+  useEffect(() => {
+    notification.info({
+      message: 'Тестовый акаунт',
+      description: 'Email: test@mail.com. Password: 1password ',
+      duration: 0,
+      placement: 'bottomRight'
+    })
+  }, [])
+
   return (
     <section className='auth-page'>
       <ShadowBlock className='auth-page__inner'>
