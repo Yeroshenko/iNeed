@@ -60,7 +60,7 @@ const TodoItem = ({
     </Checkbox>
     <div className='todo-item__icons'>
       <Tooltip title='Добавить в важные'>
-        <span>  {/* special for fix Tooltip bug */}
+        <span className='todo-item__icon-wrap'>
           {important ? (
             <StarFilledIcon
               className='todo-item__icon'
@@ -75,12 +75,12 @@ const TodoItem = ({
         </span>
       </Tooltip>
       <Tooltip title='Редактировать задачу'>
-        <span> {/* special for fix Tooltip bug */}
+        <span className='todo-item__icon-wrap'>
           <EditIcon className='todo-item__icon' onClick={toggleEditMode} />
         </span>
       </Tooltip>
       <Tooltip title='Удалить задачу'>
-        <span> {/* special for fix Tooltip bug */}
+        <span className='todo-item__icon-wrap'>
           <CloseIcon
             className='todo-item__icon'
             onClick={deleteItem.bind(this, id)}

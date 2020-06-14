@@ -7,6 +7,7 @@ import { TodoCreator, TodoItem } from 'containers'
 import 'styles/components/TodoList.sass'
 
 const TodoList = ({
+  canCreate,
   todos,
   list,
   editMode,
@@ -49,7 +50,7 @@ const TodoList = ({
                 <Form
                   layout='vertical'
                   className='todo-list__editor-form'
-                  initialValues={{title: list.title}}
+                  initialValues={{ title: list.title }}
                   form={formInstance}
                 >
                   <Form.Item
@@ -70,20 +71,24 @@ const TodoList = ({
             <h2 className='todo-list__title' style={{ color: randomColor() }}>
               {list.title}
             </h2>
-            <Dropdown overlay={menu}>
-              <span className='todo-list__dropdown-icon'>
-                <MoreIcon />
-              </span>
-            </Dropdown>
+            {canCreate && (
+              <Dropdown overlay={menu}>
+                <span className='todo-list__dropdown-icon'>
+                  <MoreIcon />
+                </span>
+              </Dropdown>
+            )}
           </div>
           <ul className='todo-list__items'>
             {todos.map(todo => (
               <TodoItem key={todo.id} todo={todo} />
             ))}
           </ul>
-          <div className='todo-list__todo-creator'>
-            <TodoCreator listId={list.id} />
-          </div>
+          {canCreate && (
+            <div className='todo-list__todo-creator'>
+              <TodoCreator listId={list.id} />
+            </div>
+          )}
         </>
       )}
     </div>

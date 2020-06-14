@@ -73,6 +73,7 @@ const TodoListContainer = ({
 
   return (
     <TodoList
+      canCreate={true}
       todos={currentTodos}
       list={currentList}
       formInstance={formInstance}
