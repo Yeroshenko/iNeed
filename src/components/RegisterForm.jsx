@@ -6,7 +6,7 @@ import { Form, Input, Button, Alert } from 'antd'
 import { required, min, confirm, isEmail } from 'utils'
 import { MailOutlinedIcon, LockOutlinedIcon } from 'icons'
 
-const RegisterForm = ({
+export const RegisterForm = ({
   hasError,
   isLoading,
   className,
@@ -78,5 +78,3 @@ const RegisterForm = ({
     </Link>
   </Form>
 )
-
-export default RegisterForm

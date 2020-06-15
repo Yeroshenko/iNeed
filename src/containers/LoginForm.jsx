@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { login, clearError } from 'redux/reducers/auth'
+import { login, clearError } from 'redux/reducers'
 import { LoginForm } from 'components'
 
 const LoginFormContainer = ({ className, isLoading, hasError, login, clearError }) => {

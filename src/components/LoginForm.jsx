@@ -6,7 +6,7 @@ import { Form, Input, Button, Alert } from 'antd'
 import { required, min, isEmail } from 'utils'
 import { MailOutlinedIcon, LockOutlinedIcon } from 'icons'
 
-const LoginForm = ({
+export const LoginForm = ({
   hasError,
   isLoading,
   className,
@@ -58,5 +58,3 @@ const LoginForm = ({
     </Link>
   </Form>
 )
-
-export default LoginForm

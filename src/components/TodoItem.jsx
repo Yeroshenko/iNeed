@@ -6,7 +6,7 @@ import { CloseIcon, EditIcon, StarOutlinedIcon, StarFilledIcon } from 'icons'
 import { Checkbox } from 'components'
 import 'styles/components/TodoItem.sass'
 
-const TodoItem = ({
+export const TodoItem = ({
   todo: { id, title, completed, important },
   deleteItem,
   editMode,
@@ -90,5 +90,3 @@ const TodoItem = ({
     </div>
   </li>
 )
-
-export default TodoItem

@@ -5,7 +5,7 @@ import { UserOutlinedIcon } from 'icons'
 import { InputFile } from 'components'
 import 'styles/components/EditProfileForm.sass'
 
-const EditProfileForm = ({
+export const EditProfileForm = ({
   visible,
   cancelModal,
   currentAvatar,
@@ -60,5 +60,3 @@ const EditProfileForm = ({
     </Form>
   </Modal>
 )
-
-export default EditProfileForm

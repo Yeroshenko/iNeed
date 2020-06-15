@@ -12,7 +12,7 @@ const initialState = {
   featching: false
 }
 
-export default function listsReducer(state = initialState, action) {
+export function listsReducer(state = initialState, action) {
   switch (action.type) {
     case SET_FEATCHING:
       return {

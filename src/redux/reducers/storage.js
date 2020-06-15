@@ -9,7 +9,7 @@ const initialState = {
   isUploading: false
 }
 
-export default function storageReducer(state = initialState, action) {
+export function storageReducer(state = initialState, action) {
   switch (action.type) {
 
     case SET_IS_UPLOADING:

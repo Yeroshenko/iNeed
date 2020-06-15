@@ -1,2 +1,2 @@
-export { default as Auth } from './Auth'
-export { default as Todo } from './Todo'
+export * from './Auth'
+export * from './Todo'

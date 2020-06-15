@@ -12,7 +12,7 @@ const initialState = {
   featching: false
 }
 
-export default function todosReducer(state = initialState, action) {
+export function todosReducer(state = initialState, action) {
   switch (action.type) {
     case SET_FEATCHING:
       return {

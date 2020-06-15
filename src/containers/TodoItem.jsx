@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { connect } from 'react-redux'
 import { Form, message } from 'antd'
 
-import { deleteTodoItem, updateTodoItem } from 'redux/reducers/todos'
+import { deleteTodoItem, updateTodoItem } from 'redux/reducers'
 import { TodoItem } from 'components'
 
 const TodoItemContainer = ({ todo, deleteTodoItem, updateTodoItem }) => {

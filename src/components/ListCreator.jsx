@@ -5,7 +5,7 @@ import { max } from 'utils'
 import { PlusIcon } from 'icons'
 import 'styles/components/ListCreator.sass'
 
-const ListCreator = ({ featching, creteList }) => {
+export const ListCreator = ({ featching, creteList }) => {
   const [createMode, setCreateMode] = useState(false)
 
   const [formInstance] = Form.useForm()
@@ -67,5 +67,3 @@ const ListCreator = ({ featching, creteList }) => {
     </div>
   )
 }
-
-export default ListCreator

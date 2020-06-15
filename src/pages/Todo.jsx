@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import { Navbar, TodoList, AllTodoList, ImportantTodoList } from 'containers'
 import 'styles/pages/Todo.sass'
 
-const Todo = () => {
+export const Todo = () => {
   return (
     <div className='todo'>
       <Navbar />
@@ -16,5 +16,3 @@ const Todo = () => {
     </div>
   )
 }
-
-export default Todo

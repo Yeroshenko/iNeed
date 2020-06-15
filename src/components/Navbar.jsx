@@ -9,7 +9,7 @@ import {
 import { NavbarUser, ListCreator } from 'components'
 import 'styles/components/Navbar.sass'
 
-const Navbar = ({
+export const Navbar = ({
   lists,
   menuClickHandler,
   currentItem,
@@ -66,5 +66,3 @@ const Navbar = ({
     </div>
   )
 }
-
-export default Navbar

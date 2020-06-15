@@ -6,7 +6,7 @@ import { max } from 'utils'
 import { PlusIcon } from 'icons'
 import 'styles/components/TodoCreator.sass'
 
-const TodoCreator = ({ featching, createMode, onSubmit, toggleCreateMode }) => {
+export const TodoCreator = ({ featching, createMode, onSubmit, toggleCreateMode }) => {
   const todoCreatorRef = useRef()
 
   return (
@@ -58,5 +58,3 @@ const TodoCreator = ({ featching, createMode, onSubmit, toggleCreateMode }) => {
     </div>
   )
 }
-
-export default TodoCreator

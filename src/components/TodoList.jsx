@@ -6,7 +6,7 @@ import { MoreIcon, EditOutlinedIcon, DeleteOutlinedIcon } from 'icons'
 import { TodoCreator, TodoItem } from 'containers'
 import 'styles/components/TodoList.sass'
 
-const TodoList = ({
+export const TodoList = ({
   canCreate,
   todos,
   list,
@@ -94,5 +94,3 @@ const TodoList = ({
     </div>
   )
 }
-
-export default TodoList

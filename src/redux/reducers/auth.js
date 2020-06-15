@@ -12,7 +12,7 @@ const initialState = {
   user: null
 }
 
-export default function authReducer(state = initialState, action) {
+export function authReducer(state = initialState, action) {
   switch (action.type) {
     case SET_LOADING:
       return {
@@ -76,7 +76,7 @@ export const login = (email, password) => async (dispatch) => {
   dispatch(setLoading(false))
 }
 
-export const logout = () => async (dispatch) => await authApi.logout()
+export const logout = () => async () => await authApi.logout()
 
 export const register = (email, password) => async (dispatch) => {
   dispatch(setError(false))

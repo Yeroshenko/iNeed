@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 
-import { checkAuth } from 'redux/reducers/auth'
+import { checkAuth } from 'redux/reducers'
 import { useRoutes } from 'routes'
 
 const App = ({ checkAuth, user }) => {

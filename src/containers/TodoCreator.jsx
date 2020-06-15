@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
 
-import { createTodoItem } from 'redux/reducers/todos'
+import { createTodoItem } from 'redux/reducers'
 import { TodoCreator } from 'components'
 
 const TodoCreatorContainer = ({ listId, featching, createTodoItem }) => {

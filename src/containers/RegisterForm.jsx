@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { register, clearError } from 'redux/reducers/auth'
+import { register, clearError } from 'redux/reducers'
 import { RegisterForm } from 'components'
 
 const RegisterFormContainer = ({ className, isLoading, hasError, register, clearError }) => {

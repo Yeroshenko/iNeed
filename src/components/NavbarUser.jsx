@@ -10,7 +10,7 @@ import {
 import { EditProfileForm } from 'containers'
 import 'styles/components/NavbarUser.sass'
 
-const NavbarUser = ({ user, className, logout }) => {
+export const NavbarUser = ({ user, className, logout }) => {
   const [showForm, setShowForm] = useState(false)
 
   const toggleShowForm = () => setShowForm(!showForm)
@@ -60,5 +60,3 @@ const NavbarUser = ({ user, className, logout }) => {
     </div>
   )
 }
-
-export default NavbarUser

@@ -6,7 +6,7 @@ import { LoginForm, RegisterForm } from 'containers'
 import { ShadowBlock } from 'components'
 import 'styles/pages/Auth.sass'
 
-const Auth = () => {
+export const Auth = () => {
   useEffect(() => {
     notification.info({
       message: 'Тестовый акаунт',
@@ -31,5 +31,3 @@ const Auth = () => {
     </section>
   )
 }
-
-export default Auth

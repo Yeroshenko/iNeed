@@ -3,8 +3,7 @@ import { useParams, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { Modal, Form } from 'antd'
 
-import { getTodos } from 'redux/reducers/todos'
-import { deleteListItem, updateListTitle } from 'redux/reducers/lists'
+import { getTodos, deleteListItem, updateListTitle } from 'redux/reducers'
 import { ExclamationCircleOutlinedIcon } from 'icons'
 import { TodoList } from 'components'
 

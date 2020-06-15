@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { useHistory, useParams } from 'react-router-dom'
 
-import { getLists, creteList } from 'redux/reducers/lists'
-import { logout } from 'redux/reducers/auth'
+import { getLists, creteList, logout } from 'redux/reducers'
 import { Navbar } from 'components'
 
 const NavbarContainer = ({ lists, user, featching, getLists, creteList, logout }) => {

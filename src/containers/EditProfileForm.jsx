@@ -2,8 +2,12 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Form } from 'antd'
 
-import { uploadAvatar, setCurrentAvatar } from 'redux/reducers/storage'
-import { setUserInfo, updateUserInfo } from 'redux/reducers/auth'
+import {
+  uploadAvatar,
+  setCurrentAvatar,
+  setUserInfo,
+  updateUserInfo
+} from 'redux/reducers'
 import { EditProfileForm } from 'components'
 
 const EditProfileFormContainer = ({
@@ -14,11 +18,11 @@ const EditProfileFormContainer = ({
   isUploading,
   uploadAvatar,
   setCurrentAvatar,
-  updateUserInfo,
+  updateUserInfo
 }) => {
   const [formInstance] = Form.useForm()
 
-  const initialValues = ({ displayName: user.displayName })
+  const initialValues = { displayName: user.displayName }
   const initailAvatar = user.photoURL
 
   const clearAvalar = () => setCurrentAvatar(null)

@@ -3,7 +3,7 @@ import React from 'react'
 import 'styles/components/InputFile.sass'
 import { useState } from 'react'
 
-const InputFile = ({ children, id, accept, setFile, cleareFile }) => {
+export const InputFile = ({ children, id, accept, setFile, cleareFile }) => {
   const [fileName, setFileName] = useState(null)
 
   const changeHandler = e => {
@@ -28,5 +28,3 @@ const InputFile = ({ children, id, accept, setFile, cleareFile }) => {
     </div>
   )
 }
-
-export default InputFile
