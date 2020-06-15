@@ -1,4 +1,5 @@
 import { listsApi } from 'api'
+import { deleteTodoItems } from './todos'
 
 const SET_FEATCHING = 'LISTS:SET_FEATCHING'
 const SET_ALL = 'LISTS:SET_ALL'
@@ -81,12 +82,15 @@ export const updateListTitle = (listId, newTitle) => async (dispatch) => {
   await listsApi.update(listId, { title : newTitle })
 
   dispatch(updateList(listId, { title: newTitle }))
-
   dispatch(setFeatching(false))
 }
 
 export const deleteListItem = (listId) => async (dispatch) => {
-  dispatch(deleteList(listId))
+  dispatch(setFeatching(true))
 
   await listsApi.delete(listId)
+
+  dispatch(deleteList(listId))
+  dispatch(deleteTodoItems(listId))
+  dispatch(setFeatching(false))
 }

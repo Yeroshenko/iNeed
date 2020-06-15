@@ -3,6 +3,7 @@ import { todosApi } from 'api'
 const SET_ALL = 'TODOS:SET_ALL'
 const SET_ITEM = 'TODOS:SET_ITEM'
 const DELETE_ITEM = 'TODOS:DELETE_ITEM'
+const DELETE_ITEMS = 'TODOS:DELETE_ITEMS'
 const UPDATE_ITEM = 'TODOS:UPDATE_ITEM'
 const SET_FEATCHING = 'TODOS:SET_FEATCHING'
 
@@ -37,6 +38,12 @@ export default function todosReducer(state = initialState, action) {
         todos: state.todos.filter(todo => todo.id !== action.todoId)
       }
 
+    case DELETE_ITEMS:
+      return {
+        ...state,
+        todos: state.todos.filter(todo => todo.listId !== action.listId)
+      }
+
     case UPDATE_ITEM:
       return {
         ...state,
@@ -58,6 +65,7 @@ export default function todosReducer(state = initialState, action) {
 export const setTodos = (todos) => ({ type: SET_ALL, todos })
 export const setTodo = (todo) => ({ type: SET_ITEM, todo })
 export const deleteTodo = (todoId) => ({ type: DELETE_ITEM, todoId })
+export const deleteTodos = (listId) => ({ type: DELETE_ITEMS, listId })
 export const updateTodo = (todoId, payload) => ({ type: UPDATE_ITEM, todoId, payload })
 export const setFeatching = (featching) => ({ type: SET_FEATCHING, featching })
 
@@ -87,4 +95,15 @@ export const deleteTodoItem = (todoId) => async (dispatch) => {
   dispatch(deleteTodo(todoId))
 
   await todosApi.delete(todoId)
+}
+
+export const deleteTodoItems = (listId) => async (dispatch, getState) => {
+  dispatch(setFeatching(true))
+  const todos = getState().todos.todos.filter(todo => todo.listId === listId)
+
+  if (todos.length > 0) {
+    todos.map(todo => dispatch(deleteTodoItem(todo.id)))
+  }
+  dispatch(deleteTodos(listId))
+  dispatch(setFeatching(false))
 }
