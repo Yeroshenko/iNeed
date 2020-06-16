@@ -70,7 +70,6 @@ export const login = (email, password) => async (dispatch) => {
   dispatch(setLoading(true))
 
   const res = await authApi.login(email, password)
-
   if (res.code) dispatch(setError(true))
 
   dispatch(setLoading(false))

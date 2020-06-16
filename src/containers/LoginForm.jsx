@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 
 import {
   login,
@@ -17,8 +18,20 @@ const LoginFormContainer = ({
   login,
   clearError
 }) => {
-  const submitHandler = ({ email, password }) => {
-    login(email, password)
+  const history = useHistory()
+
+  const redirectWrapper = async (fn) => {
+    await fn()
+    history.push('/tasks')
+  }
+
+  const githubLoginHandler = () => redirectWrapper(githubLogin)
+  const googleLoginHandler = () => redirectWrapper(googleLogin)
+  const facebookLoginHandler = () => redirectWrapper(facebookLogin)
+
+  const submitHandler = async ({ email, password }) => {
+    await login(email, password)
+    history.push('/tasks')
   }
 
   return (
@@ -28,9 +41,9 @@ const LoginFormContainer = ({
       onSubmit={submitHandler}
       hasError={hasError}
       clearError={clearError}
-      githubLogin={githubLogin}
-      facebookLogin={facebookLogin}
-      googleLogin={googleLogin}
+      githubLogin={githubLoginHandler}
+      facebookLogin={facebookLoginHandler}
+      googleLogin={googleLoginHandler}
     />
   )
 }

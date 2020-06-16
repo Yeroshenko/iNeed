@@ -9,8 +9,9 @@ export const useRoutes = user => {
     return (
       <Switch>
         <Route path='/:id' component={Todo} exact />
-        <Redirect to='/tasks' component={Todo} exact />
-        <Redirect to='/important' component={Todo} exact />
+        <Route to='/tasks' component={Todo} exact />
+        <Route to='/important' component={Todo} exact />
+        <Redirect to='/tasks' />
       </Switch>
     )
   }
