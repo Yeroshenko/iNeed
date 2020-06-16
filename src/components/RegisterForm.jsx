@@ -68,13 +68,21 @@ export const RegisterForm = ({
       />
     </Form.Item>
 
-    <Form.Item>
-      <Button type='primary' htmlType='submit' loading={isLoading}>
+    <div className='auth-form__btn-wrap'>
+      <Button
+        type='primary'
+        htmlType='submit'
+        className='auth-form__btn'
+        loading={isLoading}
+      >
         Зарегистрироваться
       </Button>
-    </Form.Item>
+    </div>
+
     <Link to='/login' onClick={clearError}>
-      <Button type='link'>Есть аккаунт</Button>
+      <Button type='link' className='auth-form__btn'>
+        Есть аккаунт
+      </Button>
     </Link>
   </Form>
 )

@@ -1,10 +1,22 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import { login, clearError } from 'redux/reducers'
+import {
+  login,
+  clearError,
+  githubLogin,
+  facebookLogin,
+  googleLogin
+} from 'redux/reducers'
 import { LoginForm } from 'components'
 
-const LoginFormContainer = ({ className, isLoading, hasError, login, clearError }) => {
+const LoginFormContainer = ({
+  className,
+  isLoading,
+  hasError,
+  login,
+  clearError
+}) => {
   const submitHandler = ({ email, password }) => {
     login(email, password)
   }
@@ -16,13 +28,22 @@ const LoginFormContainer = ({ className, isLoading, hasError, login, clearError 
       onSubmit={submitHandler}
       hasError={hasError}
       clearError={clearError}
+      githubLogin={githubLogin}
+      facebookLogin={facebookLogin}
+      googleLogin={googleLogin}
     />
   )
 }
 
 const mapStateToProps = state => ({
   isLoading: state.auth.isLoading,
-  hasError: state.auth.hasError,
+  hasError: state.auth.hasError
 })
 
-export default connect(mapStateToProps, { login, clearError })(LoginFormContainer)
+export default connect(mapStateToProps, {
+  login,
+  clearError,
+  githubLogin,
+  facebookLogin,
+  googleLogin
+})(LoginFormContainer)

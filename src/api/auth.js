@@ -16,5 +16,8 @@ export const authApi = {
   },
   updateUser(newInfo) {
     return auth.currentUser.updateProfile(newInfo)
+  },
+  loginUsingProvider(provider) {
+    return auth.signInWithPopup(provider)
   }
 }

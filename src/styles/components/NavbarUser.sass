@@ -3,11 +3,7 @@
 .navbar-user
   display: flex
   align-items: center
-  text-overflow: ellipsis
   color: $white
-  overflow: hidden
-  width: 240px
-  white-space: nowrap
 
 .navbar-user__avatar.ant-avatar
   text-transform: uppercase
@@ -25,8 +21,16 @@
 
 
 .navbar-user__nickname
+  width: 160px
   font-size: 18px
+  text-overflow: ellipsis
+  white-space: nowrap
+  overflow: hidden
 
 .navbar-user__email
+  width: 160px
   font-size: 16px
+  text-overflow: ellipsis
+  white-space: nowrap
   opacity: .65
+  overflow: hidden

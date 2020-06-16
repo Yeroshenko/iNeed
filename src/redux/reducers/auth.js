@@ -1,5 +1,5 @@
 import { authApi } from 'api'
-import { auth } from 'firabase-config'
+import { auth, facebookProvider, googleProvider, githubProvider } from 'firabase-config'
 
 const SET_LOADING = 'AUTH:SET_LOADING'
 const SET_USER = 'AUTH:SET_USER'
@@ -75,6 +75,10 @@ export const login = (email, password) => async (dispatch) => {
 
   dispatch(setLoading(false))
 }
+
+export const facebookLogin = () => authApi.loginUsingProvider(facebookProvider)
+export const googleLogin = () => authApi.loginUsingProvider(googleProvider)
+export const githubLogin = () => authApi.loginUsingProvider(githubProvider)
 
 export const logout = () => async () => await authApi.logout()
 

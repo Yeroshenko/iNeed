@@ -18,12 +18,18 @@ import { ReactComponent as PlusSvg } from 'assets/icons/plus.svg'
 import { ReactComponent as CloseSvg } from 'assets/icons/close.svg'
 import { ReactComponent as EditSvg } from 'assets/icons/edit.svg'
 import { ReactComponent as MoreSvg } from 'assets/icons/more.svg'
+import { ReactComponent as FacebookSvg } from 'assets/icons/facebook-logo.svg'
+import { ReactComponent as GithubSvg } from 'assets/icons/github-logo.svg'
+import { ReactComponent as GoogleSvg } from 'assets/icons/google-logo.svg'
 
 // custom icons
 export const PlusIcon = props => <Icon component={PlusSvg} {...props} />
 export const CloseIcon = props => <Icon component={CloseSvg} {...props} />
 export const EditIcon = props => <Icon component={EditSvg} {...props} />
 export const MoreIcon = props => <Icon component={MoreSvg} {...props} />
+export const GithubIcon = props => <Icon component={GithubSvg} {...props} />
+export const GoogleIcon = props => <Icon component={GoogleSvg} {...props} />
+export const FacebookIcon = props => <Icon component={FacebookSvg} {...props} />
 
 export const StarOutlinedIcon = props => <StarOutlined {...props} />
 export const StarFilledIcon = props => <StarFilled {...props} />
