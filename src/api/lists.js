@@ -9,6 +9,7 @@ export const listsApi = {
         const items = snapshot.docs
           .filter(doc => doc.data().uid === uid)
           .map(doc => ({ id: doc.id, ...doc.data() }))
+          .sort((a, b) => a.createdAt > b.createdAt ? 1 : -1)
         return items
       })
       .catch(error => {
