@@ -62,15 +62,18 @@ export const updateList = (listId, payload) => ({ type: UPDATE_ITEM, listId, pay
 export const deleteList = (listId) => ({ type: DELETE_ITEM, listId })
 
 // Thank creators
-export const getLists = () => async (dispatch) => {
-  const lists = await listsApi.getAll()
+export const getLists = () => async (dispatch, getState) => {
+  const uid = getState().auth.user.uid
+  const lists = await listsApi.getAll(uid)
 
   dispatch(setLists(lists))
 }
 
-export const creteList = (listName) => async (dispatch) => {
+export const creteList = (listName) => async (dispatch, getState) => {
   dispatch(setFeatching(true))
-  const newListItem = await listsApi.create({ title: listName})
+
+  const uid = getState().auth.user.uid
+  const newListItem = await listsApi.create({ title: listName, uid})
 
   dispatch(setList(newListItem))
   dispatch(setFeatching(false))

@@ -1,14 +1,13 @@
 import { db } from 'firabase-config'
 
 export const todosApi = {
-  getAll() {
+  getAll(uid) {
     return db.collection('todos')
       .get()
       .then(snapshot => {
-        const items = snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }))
+        const items = snapshot.docs
+          .filter(doc => doc.data().uid === uid)
+          .map(doc => ({ id: doc.id, ...doc.data() }))
         return items
       })
       .catch(error => {
@@ -35,7 +34,8 @@ export const todosApi = {
       .add({
         ...data,
         completed: false,
-        important: false
+        important: false,
+        createdAt: new Date()
       })
       .then(docRef => docRef.get())
       .then(doc => ({

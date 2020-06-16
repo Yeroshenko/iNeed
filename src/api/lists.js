@@ -1,15 +1,14 @@
 import { db } from 'firabase-config'
 
 export const listsApi = {
-  getAll() {
+  getAll(uid) {
     return db
       .collection('lists')
       .get()
       .then(snapshot => {
-        const items = snapshot.docs.map(doc => ({
-          id: doc.id,
-          ...doc.data()
-        }))
+        const items = snapshot.docs
+          .filter(doc => doc.data().uid === uid)
+          .map(doc => ({ id: doc.id, ...doc.data() }))
         return items
       })
       .catch(error => {
@@ -19,9 +18,7 @@ export const listsApi = {
   create(data) {
     return db
       .collection('lists')
-      .add({
-        ...data
-      })
+      .add({ ...data, createdAt: new Date() })
       .then(docRef => docRef.get())
       .then(doc => ({
         id: doc.id,

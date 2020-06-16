@@ -70,18 +70,20 @@ export const updateTodo = (todoId, payload) => ({ type: UPDATE_ITEM, todoId, pay
 export const setFeatching = (featching) => ({ type: SET_FEATCHING, featching })
 
 // Thank creators
-export const getTodos = () => async (dispatch) => {
-  const todos = await todosApi.getAll()
+export const getTodos = () => async (dispatch, getState) => {
+  const uid = getState().auth.user.uid
+  const todos = await todosApi.getAll(uid)
 
   dispatch(setTodos(todos))
 }
 
-export const createTodoItem = (todo) => async (dispatch) => {
+export const createTodoItem = (todo) => async (dispatch, getState) => {
   dispatch(setFeatching(true))
 
-  const newTodo = await todosApi.create(todo)
-  dispatch(setTodo(newTodo))
+  const uid = getState().auth.user.uid
+  const newTodo = await todosApi.create({...todo, uid})
 
+  dispatch(setTodo(newTodo))
   dispatch(setFeatching(false))
 }
 
