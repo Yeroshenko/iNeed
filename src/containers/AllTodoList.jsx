@@ -9,6 +9,8 @@ const AllTodoListContainer = ({ todos, getTodos }) => {
 
   const list = { title: 'Все задачи' }
 
+  const emptyText = 'Создайте задачу в любом списке и тогда она здесь появиться'
+
   useEffect(() => {
     getTodos()
   }, [getTodos])
@@ -17,7 +19,14 @@ const AllTodoListContainer = ({ todos, getTodos }) => {
     setCurrentTodos(todos)
   }, [todos])
 
-  return <TodoList canCreate={false} todos={currentTodos} list={list} />
+  return (
+    <TodoList
+      canCreate={false}
+      todos={currentTodos}
+      list={list}
+      emptyText={emptyText}
+    />
+  )
 }
 
 const mapStateToProps = state => ({

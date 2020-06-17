@@ -9,6 +9,8 @@ const ImportantTodoListContainer = ({ todos, getTodos }) => {
 
   const list = { title: 'Важные задачи' }
 
+  const emptyText = 'Отметьте задачу как важную и тогда она здесь появиться'
+
   const currentTodosCreator = todos =>
     todos.filter(item => item.important === true)
 
@@ -20,7 +22,14 @@ const ImportantTodoListContainer = ({ todos, getTodos }) => {
     setCurrentTodos(currentTodosCreator(todos))
   }, [todos])
 
-  return <TodoList canCreate={false} todos={currentTodos} list={list} />
+  return (
+    <TodoList
+      canCreate={false}
+      todos={currentTodos}
+      list={list}
+      emptyText={emptyText}
+    />
+  )
 }
 
 const mapStateToProps = state => ({

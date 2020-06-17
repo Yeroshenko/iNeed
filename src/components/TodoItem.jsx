@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { Modal, Form, Input, Tooltip } from 'antd'
 
 import { max } from 'utils'
@@ -6,7 +6,7 @@ import { CloseIcon, EditIcon, StarOutlinedIcon, StarFilledIcon } from 'icons'
 import { Checkbox } from 'components'
 import 'styles/components/TodoItem.sass'
 
-export const TodoItem = ({
+export const TodoItem = memo(({
   todo: { id, title, completed, important },
   deleteItem,
   editMode,
@@ -63,12 +63,12 @@ export const TodoItem = ({
         <span className='todo-item__icon-wrap'>
           {important ? (
             <StarFilledIcon
-              className='todo-item__icon'
+              className='todo-item__icon todo-item__icon_blue'
               onClick={toggleImportant.bind(this, id, important)}
             />
           ) : (
             <StarOutlinedIcon
-              className='todo-item__icon'
+              className='todo-item__icon todo-item__icon_blue'
               onClick={toggleImportant.bind(this, id, important)}
             />
           )}
@@ -89,4 +89,4 @@ export const TodoItem = ({
       </Tooltip>
     </div>
   </li>
-)
+))
