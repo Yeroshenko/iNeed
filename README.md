@@ -3,7 +3,7 @@
 
 ![Главная страница](https://cutt.ly/quYbriu)
 
-Используемые технологии:
+Used technologies:
  - React
  - React-router-dom
  - Redux
