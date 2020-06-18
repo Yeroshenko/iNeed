@@ -9,6 +9,9 @@ import 'styles/components/TodoCreator.sass'
 export const TodoCreator = ({ featching, createMode, onSubmit, toggleCreateMode }) => {
   const todoCreatorRef = useRef()
 
+  const formSize = window.innerWidth >= 425 ? 'large': 'default'
+  console.log(formSize)
+
   return (
     <div
       className={cn('todo-creator', { 'todo-creator--created': createMode })}
@@ -24,7 +27,7 @@ export const TodoCreator = ({ featching, createMode, onSubmit, toggleCreateMode 
       {createMode && (
         <Form
           name='basic'
-          size='large'
+          size={formSize}
           className='todo-creator__form'
           onFinish={onSubmit}
         >

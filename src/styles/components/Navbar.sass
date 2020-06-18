@@ -1,4 +1,5 @@
 @import '../variables'
+@import '../breakpoints'
 
 .navbar
   height: 100%
@@ -24,6 +25,8 @@
 
 .navbar__menu-text
   font-size: 18px
+  +media('<=phone')
+    font-size: 16px
 
 .navbar__menu-separator
   opacity: .2

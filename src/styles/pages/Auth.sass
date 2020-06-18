@@ -1,3 +1,5 @@
+@import '../breakpoints'
+
 .auth-page
   display: flex
   align-items: center
@@ -13,6 +15,8 @@
   align-items: center
   flex-direction: column
   animation: fadeInUp 1s
+  +media('<=phone')
+    padding: 24px 16px
 
 .auth-page__subtitle
   font-size: 20px

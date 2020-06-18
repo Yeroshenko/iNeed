@@ -1,19 +1,26 @@
 @import '../variables'
+@import '../breakpoints'
 
 .todo-creator
   padding: 8px 20px
   background-color: $white
   border-radius: $base-border-radius
   transition: $main-transition
+  +media('<=phone')
+    padding: 6px 16px
 
   &--created
     padding: 20px
+    +media('<=phone')
+      padding: 16px
 
 .todo-creator__trigger
   font-size: 20px
   opacity: .6
   transition: $main-transition
   cursor: pointer
+  +media('<=600px')
+    font-size: 18px
 
   &:hover
     opacity: 1
@@ -28,3 +35,9 @@
 .todo-creator__buttons .todo-creator__button
   &:not(:last-child)
     margin-right: 12px
+
+.todo-creator__buttons
+  +media('<=phone')
+    display: flex
+    button
+      width: 100%
