@@ -10,7 +10,6 @@ export const TodoCreator = ({ featching, createMode, onSubmit, toggleCreateMode 
   const todoCreatorRef = useRef()
 
   const formSize = window.innerWidth >= 425 ? 'large': 'default'
-  console.log(formSize)
 
   return (
     <div
