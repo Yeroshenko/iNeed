@@ -2,17 +2,17 @@
 @import '../breakpoints'
 
 .todo-list
+  display: flex
+  flex-direction: column
   width: 100%
   padding: 60px
   transition: $main-transition
-  overflow: auto
   +media('<=tablet')
     padding: 40px
   +media('<=phone')
     padding: 16px
 
 /* Header */
-
 .todo-list__header
   margin-bottom: 24px
   display: flex
@@ -42,5 +42,6 @@
     font-size: 18px
 
 .todo-list__items
-  list-style: none
   padding: 0
+  list-style: none
+  overflow: auto

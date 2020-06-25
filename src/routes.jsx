@@ -14,7 +14,7 @@ export const useRoutes = user => {
     )
   }
 
-  if (user === null) {
+  if (!user) {
     return <Spinner fullpage={true} />
   }
 

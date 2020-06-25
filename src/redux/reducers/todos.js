@@ -29,7 +29,7 @@ export function todosReducer(state = initialState, action) {
     case SET_ITEM:
       return {
         ...state,
-        todos: [...state.todos, action.todo]
+        todos: [action.todo, ...state.todos]
       }
 
     case DELETE_ITEM:

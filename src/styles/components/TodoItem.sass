@@ -2,12 +2,15 @@
 @import '../breakpoints'
 
 .todo-item
-  margin-bottom: 12px
   padding: 8px 20px
   display: flex
   align-items: center
   background-color: $white
   border-radius: $base-border-radius
+
+  &:not(:last-child)
+    margin-bottom: 12px
+
   +media('<=phone')
     padding: 6px 12px
 
