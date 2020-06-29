@@ -14,7 +14,7 @@ const App = ({ checkAuth, user }) => {
   return <div className='app'>{routes}</div>
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   user: state.auth.user
 })
 
