@@ -8,7 +8,7 @@
     "@testing-library/user-event": "^7.1.2",
     "antd": "^4.2.0",
     "babel-plugin-import": "^1.13.0",
-    "browser-image-compression": "^1.0.11",
+    "browser-image-compression": "^1.0.12",
     "customize-cra": "^1.0.0",
     "firebase": "^7.14.2",
     "moment": "^2.24.0",
