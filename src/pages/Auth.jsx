@@ -27,7 +27,7 @@ export const Auth = () => {
     <section className='auth-page'>
       <ShadowBlock className='auth-page__inner'>
         <Typography.Title level={2} className='auth-page__title'>
-          I need
+          INeed
         </Typography.Title>
 
         <p className='auth-page__subtitle'>Умный тайм-менеджмент</p>
